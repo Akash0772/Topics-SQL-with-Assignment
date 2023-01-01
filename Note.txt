@@ -1,0 +1,22 @@
+Basic
+sql1	===	DDL, DML //1
+sql2	===	DQL //1
+
+Constraints
+sql3	===	NOT NULL, UNIQUE AND PRIMARY KEY //2
+sql4	===	FOREIGN KEY //2
+
+Mappings and Joins
+sql5	===	ONE-TO-ONE AND JOINS //3
+sql6	===	ONE-TO-MANY AND JOINS //3
+sql7	===	MANY-TO-MANY AND JOINS //3
+
+Real time usage
+sql8	===	DATE AND TIMESTAMP //4
+sql9	===	DESIGNING EMPLOYEE DATABASE //4
+
+Normal Forms
+sql10	===	Normal Forms //5
+
+Assignment
+sql11	===	ASSIGNMENT //6
