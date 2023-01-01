@@ -1,22 +1,23 @@
 Basic
-sql1	===	DDL, DML //1
-sql2	===	DQL //1
+sql1	===	DDL, DML 
+sql2	===	DQL 
+
 
 Constraints
-sql3	===	NOT NULL, UNIQUE AND PRIMARY KEY //2
-sql4	===	FOREIGN KEY //2
+sql3	===	NOT NULL, UNIQUE AND PRIMARY KEY 
+sql4	===	FOREIGN KEY 
 
 Mappings and Joins
-sql5	===	ONE-TO-ONE AND JOINS //3
-sql6	===	ONE-TO-MANY AND JOINS //3
-sql7	===	MANY-TO-MANY AND JOINS //3
+sql5	===	ONE-TO-ONE AND JOINS 
+sql6	===	ONE-TO-MANY AND JOINS 
+sql7	===	MANY-TO-MANY AND JOINS 
 
 Real time usage
-sql8	===	DATE AND TIMESTAMP //4
-sql9	===	DESIGNING EMPLOYEE DATABASE //4
+sql8	===	DATE AND TIMESTAMP 
+sql9	===	DESIGNING EMPLOYEE DATABASE 
 
 Normal Forms
-sql10	===	Normal Forms //5
+sql10	===	Normal Forms 
 
 Assignment
-sql11	===	ASSIGNMENT //6
+sql11	===	ASSIGNMENT 
