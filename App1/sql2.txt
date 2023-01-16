@@ -1,187 +1,1232 @@
 DROP TABLE EMPLOYEE;
-CREATE TABLE EMPLOYEE (ID NUMBER,
-                     FIRST_NAME VARCHAR2(90),
-                     LAST_NAME VARCHAR2(90),
-                     AGE NUMBER,
-		     SALARY NUMBER,
-                     EMAIL VARCHAR2(90));
+CREATE TABLE EMPLOYEE (ID INT,
+                     FIRST_NAME VARCHAR(90),
+                     LAST_NAME VARCHAR(90),
+                     AGE INT,
+		     SALARY INT,
+                     EMAIL VARCHAR(90));
+Query OK, 0 rows affected (1.77 sec)
 
-INSERT INTO EMPLOYEE VALUES(1, 'RAMU', 'BTM', 22, 4000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(2, 'RAVI', 'RAO', 24, 3000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(3, 'MANU', 'BTM', 23, 5000, 'M@G.IN');
-INSERT INTO EMPLOYEE VALUES(4, 'MURALI', 'RAO', 26, 5500, 'M@G.IN');
-INSERT INTO EMPLOYEE VALUES(5, 'RAGHU', 'JD', 25, 2000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(6, 'PAVAN', 'NAO', 28, 3500, 'P@G.IN');
-INSERT INTO EMPLOYEE VALUES(7, 'ANU', 'JP', 21, 6000, 'A@G.IN');
-INSERT INTO EMPLOYEE VALUES(8, 'SWETHA', 'NAO', 29, 5600, 'W@G.IN');
-INSERT INTO EMPLOYEE VALUES(9, 'SUNITHA', 'JD', 32, 7000, 'SU@G.IN');
-INSERT INTO EMPLOYEE VALUES(10, 'KIRAN', 'JP', 30, 5300, 'K@G.IN');
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+
+// INSERT MULTIPLE ROWS
+INSERT INTO EMPLOYEE 
+VALUES
+(1, 'RAMU', 'BTM', 22, 4000, 'R@G.IN'),
+(2, 'RAVI', 'RAO', 24, 3000, 'R@G.IN'),
+(3, 'MANU', 'BTM', 23, 5000, 'M@G.IN'),
+(4, 'MURALI', 'RAO', 26, 5500, 'M@G.IN'),
+(5, 'RAGHU', 'JD', 25, 2000, 'R@G.IN'),
+(6, 'PAVAN', 'NAO', 28, 3500, 'P@G.IN'),
+(7, 'ANU', 'JP', 21, 6000, 'A@G.IN'),
+(8, 'SWETHA', 'NAO', 29, 5600, 'W@G.IN'),
+(9, 'SUNITHA', 'JD', 32, 7000, 'SU@G.IN'),
+(10, 'KIRAN', 'JP', 30, 5300, 'K@G.IN');
+Query OK, 10 rows affected (0.11 sec)
+Records: 10  Duplicates: 0  Warnings: 0
 
 SELECT * FROM EMPLOYEE;
-SELECT * FROM EMPLOYEE WHERE ID = 5;
-SELECT * FROM EMPLOYEE WHERE ID > 5;
-SELECT * FROM EMPLOYEE WHERE AGE BETWEEN 22 AND 28;
-SELECT * FROM EMPLOYEE WHERE AGE NOT BETWEEN 22 AND 28;
-SELECT * FROM EMPLOYEE WHERE SALARY IN (4000, 5500, 7000);
-SELECT * FROM EMPLOYEE WHERE SALARY NOT IN (4000, 5500, 7000);
-SELECT * FROM EMPLOYEE WHERE FIRST_NAME LIKE '%R%';
-SELECT FIRST_NAME, AGE FROM EMPLOYEE;
-SELECT FIRST_NAME, AGE, EMAIL FROM EMPLOYEE;
-SELECT FIRST_NAME, ID, AGE FROM EMPLOYEE;
-SELECT FIRST_NAME, AGE, LAST_NAME FROM EMPLOYEE;
-SELECT FIRST_NAME AS MYNAME, AGE, LAST_NAME FROM EMPLOYEE;
-SELECT FIRST_NAME AS MYNAME, AGE AS MYAGE, LAST_NAME FROM EMPLOYEE;
-SELECT FIRST_NAME MYNAME, AGE, LAST_NAME FROM EMPLOYEE;
-SELECT FIRST_NAME MYNAME, AGE MYAGE, LAST_NAME FROM EMPLOYEE;
+mysql> SELECT * FROM EMPLOYEE;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
 
+
+SELECT * FROM EMPLOYEE WHERE ID = 5;
+mysql> SELECT * FROM EMPLOYEE WHERE ID = 5;
++------+------------+-----------+------+--------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL  |
++------+------------+-----------+------+--------+--------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN |
++------+------------+-----------+------+--------+--------+
+1 row in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE WHERE ID > 5;
+mysql> SELECT * FROM EMPLOYEE WHERE ID > 5;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
++------+------------+-----------+------+--------+---------+
+5 rows in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE WHERE AGE BETWEEN 22 AND 28;
+mysql> SELECT * FROM EMPLOYEE WHERE AGE BETWEEN 22 AND 28;
++------+------------+-----------+------+--------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL  |
++------+------------+-----------+------+--------+--------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN |
++------+------------+-----------+------+--------+--------+
+6 rows in set (0.01 sec)
+
+
+SELECT * FROM EMPLOYEE WHERE AGE NOT BETWEEN 22 AND 28;
+mysql> SELECT * FROM EMPLOYEE WHERE AGE NOT BETWEEN 22 AND 28;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
++------+------------+-----------+------+--------+---------+
+4 rows in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE WHERE SALARY IN (4000, 5500, 7000);
+mysql> SELECT * FROM EMPLOYEE WHERE SaLARY IN (4000, 5500, 7000);
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+3 rows in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE WHERE SALARY NOT IN (4000, 5500, 7000);
+mysql> SELECT * FROM EMPLOYEE WHERE SaLARY NOT IN (4000, 5500, 7000);
++------+------------+-----------+------+--------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL  |
++------+------------+-----------+------+--------+--------+
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN |
++------+------------+-----------+------+--------+--------+
+7 rows in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE WHERE FIRST_NAME LIKE '%R%';
+mysql> SELECT * FROM EMPLOYEE WHERE FIRST_NAME LIKE '%R%';
++------+------------+-----------+------+--------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL  |
++------+------------+-----------+------+--------+--------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN |
++------+------------+-----------+------+--------+--------+
+5 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME, AGE FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME, AGE FROM EMPLOYEE;
++------------+------+
+| FIRST_NAME | AGE  |
++------------+------+
+| RAMU       |   22 |
+| RAVI       |   24 |
+| MANU       |   23 |
+| MURALI     |   26 |
+| RAGHU      |   25 |
+| PAVAN      |   28 |
+| ANU        |   21 |
+| SWETHA     |   29 |
+| SUNITHA    |   32 |
+| KIRAN      |   30 |
++------------+------+
+10 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME, AGE, EMAIL FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME, AGE, EMAIL FROM EMPLOYEE;
++------------+------+---------+
+| FIRST_NAME | AGE  | EMAIL   |
++------------+------+---------+
+| RAMU       |   22 | R@G.IN  |
+| RAVI       |   24 | R@G.IN  |
+| MANU       |   23 | M@G.IN  |
+| MURALI     |   26 | M@G.IN  |
+| RAGHU      |   25 | R@G.IN  |
+| PAVAN      |   28 | P@G.IN  |
+| ANU        |   21 | A@G.IN  |
+| SWETHA     |   29 | W@G.IN  |
+| SUNITHA    |   32 | SU@G.IN |
+| KIRAN      |   30 | K@G.IN  |
++------------+------+---------+
+10 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME, ID, AGE FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME, ID, AGE FROM EMPLOYEE;
++------------+------+------+
+| FIRST_NAME | ID   | AGE  |
++------------+------+------+
+| RAMU       |    1 |   22 |
+| RAVI       |    2 |   24 |
+| MANU       |    3 |   23 |
+| MURALI     |    4 |   26 |
+| RAGHU      |    5 |   25 |
+| PAVAN      |    6 |   28 |
+| ANU        |    7 |   21 |
+| SWETHA     |    8 |   29 |
+| SUNITHA    |    9 |   32 |
+| KIRAN      |   10 |   30 |
++------------+------+------+
+10 rows in set (0.00 sec)
+
+SELECT FIRST_NAME, AGE, LAST_NAME FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME, AGE, LAST_NAME FROM EMPLOYEE;
++------------+------+-----------+
+| FIRST_NAME | AGE  | LAST_NAME |
++------------+------+-----------+
+| RAMU       |   22 | BTM       |
+| RAVI       |   24 | RAO       |
+| MANU       |   23 | BTM       |
+| MURALI     |   26 | RAO       |
+| RAGHU      |   25 | JD        |
+| PAVAN      |   28 | NAO       |
+| ANU        |   21 | JP        |
+| SWETHA     |   29 | NAO       |
+| SUNITHA    |   32 | JD        |
+| KIRAN      |   30 | JP        |
++------------+------+-----------+
+10 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME AS MYNAME, AGE, LAST_NAME FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME AS MYNAME, AGE, LAST_NAME FROM EMPLOYEE;
++---------+------+-----------+
+| MYNAME  | AGE  | LAST_NAME |
++---------+------+-----------+
+| RAMU    |   22 | BTM       |
+| RAVI    |   24 | RAO       |
+| MANU    |   23 | BTM       |
+| MURALI  |   26 | RAO       |
+| RAGHU   |   25 | JD        |
+| PAVAN   |   28 | NAO       |
+| ANU     |   21 | JP        |
+| SWETHA  |   29 | NAO       |
+| SUNITHA |   32 | JD        |
+| KIRAN   |   30 | JP        |
++---------+------+-----------+
+10 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME AS MYNAME, AGE AS MYAGE, LAST_NAME FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME AS MYNAME, AGE AS MYAGE, LAST_NAME FROM EMPLOYEE;
++---------+-------+-----------+
+| MYNAME  | MYAGE | LAST_NAME |
++---------+-------+-----------+
+| RAMU    |    22 | BTM       |
+| RAVI    |    24 | RAO       |
+| MANU    |    23 | BTM       |
+| MURALI  |    26 | RAO       |
+| RAGHU   |    25 | JD        |
+| PAVAN   |    28 | NAO       |
+| ANU     |    21 | JP        |
+| SWETHA  |    29 | NAO       |
+| SUNITHA |    32 | JD        |
+| KIRAN   |    30 | JP        |
++---------+-------+-----------+
+10 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME MYNAME, AGE, LAST_NAME FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME MYNAME, AGE, LAST_NAME FROM EMPLOYEE;
++---------+------+-----------+
+| MYNAME  | AGE  | LAST_NAME |
++---------+------+-----------+
+| RAMU    |   22 | BTM       |
+| RAVI    |   24 | RAO       |
+| MANU    |   23 | BTM       |
+| MURALI  |   26 | RAO       |
+| RAGHU   |   25 | JD        |
+| PAVAN   |   28 | NAO       |
+| ANU     |   21 | JP        |
+| SWETHA  |   29 | NAO       |
+| SUNITHA |   32 | JD        |
+| KIRAN   |   30 | JP        |
++---------+------+-----------+
+10 rows in set (0.00 sec)
+
+
+SELECT FIRST_NAME MYNAME, AGE MYAGE, LAST_NAME FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME MYNAME, AGE MYAGE, LAST_NAME FROM EMPLOYEE;
++---------+-------+-----------+
+| MYNAME  | MYAGE | LAST_NAME |
++---------+-------+-----------+
+| RAMU    |    22 | BTM       |
+| RAVI    |    24 | RAO       |
+| MANU    |    23 | BTM       |
+| MURALI  |    26 | RAO       |
+| RAGHU   |    25 | JD        |
+| PAVAN   |    28 | NAO       |
+| ANU     |    21 | JP        |
+| SWETHA  |    29 | NAO       |
+| SUNITHA |    32 | JD        |
+| KIRAN   |    30 | JP        |
++---------+-------+-----------+
+10 rows in set (0.01 sec)
+
+
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+
+// USE COUNT
 
 SELECT COUNT(*) FROM EMPLOYEE
+mysql> SELECT COUNT(*) FROM EMPLOYEE;
++----------+
+| COUNT(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.07 sec)
+
+
 SELECT COUNT(*) AS "RECORDS COUNT" FROM EMPLOYEE
+mysql> SELECT COUNT(*) AS "RECORDS COUNT" FROM EMPLOYEE;
++---------------+
+| RECORDS COUNT |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.01 sec)
+
+
 SELECT COUNT(*)  "RECORDS COUNT" FROM EMPLOYEE
+mysql> SELECT COUNT(*) "RECORDS COUNT" FROM EMPLOYEE;
++---------------+
+| RECORDS COUNT |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.01 sec)
+
+
 SELECT COUNT(AGE)  "RECORDS COUNT" FROM EMPLOYEE
+mysql> SELECT COUNT(AGE) "RECORDS COUNT" FROM EMPLOYEE;
++---------------+
+| RECORDS COUNT |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.44 sec)
+
+
 SELECT COUNT(LAST_NAME)  "RECORDS COUNT" FROM EMPLOYEE
+mysql> SELECT COUNT(LAST_NAME) "RECORDS COUNT" FROM EMPLOYEE;
++---------------+
+| RECORDS COUNT |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.00 sec)
+
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
 
 SELECT MAX(AGE) FROM EMPLOYEE;
-SELECT MAX(AGE) AS "MAX AGE" FROM EMPLOYEE;
-SELECT MAX(AGE) "MAX AGE" FROM EMPLOYEE;
-SELECT MAX(AGE) "MAX AGE" FROM EMPLOYEE;
-SELECT MIN(SALARY) FROM EMPLOYEE;
-SELECT MIN(SALARY) MIN_SAL FROM EMPLOYEE;
-SELECT MIN(SALARY) "MIN SAL" FROM EMPLOYEE;
-SELECT AVG(SALARY) FROM EMPLOYEE;
-SELECT AVG(SALARY) "AVG SALARY" FROM EMPLOYEE;
-SELECT AVG(AGE) "AVG AGE" FROM EMPLOYEE;
-SELECT MIN(FIRST_NAME) FROM EMPLOYEE;
-SELECT MAX(FIRST_NAME) FROM EMPLOYEE;
+mysql> SELECT MAX(AGE) FROM EMPLOYEE;
++----------+
+| MAX(AGE) |
++----------+
+|       32 |
++----------+
+1 row in set (0.01 sec)
 
+
+SELECT MAX(AGE) AS "MAX AGE" FROM EMPLOYEE;
+mysql> SELECT MAX(AGE) AS "MAX AGE" FROM EMPLOYEE;
++---------+
+| MAX AGE |
++---------+
+|      32 |
++---------+
+1 row in set (0.00 sec)
+
+
+SELECT MAX(AGE) "MAX AGE" FROM EMPLOYEE;
+mysql> SELECT MAX(AGE) "MAX AGE" FROM EMPLOYEE;
++---------+
+| MAX AGE |
++---------+
+|      32 |
++---------+
+1 row in set (0.00 sec)
+
+
+SELECT MIN(SALARY) FROM EMPLOYEE;
+mysql> SELECT MIN(SALARY) FROM EMPLOYEE;
++-------------+
+| MIN(SALARY) |
++-------------+
+|        2000 |
++-------------+
+1 row in set (0.00 sec)
+
+
+SELECT MIN(SALARY) MIN_SAL FROM EMPLOYEE;
+mysql> SELECT MIN(SALARY) MIN_SAL FROM EMPLOYEE;
++---------+
+| MIN_SAL |
++---------+
+|    2000 |
++---------+
+1 row in set (0.00 sec)
+
+
+SELECT MIN(SALARY) "MIN SAL" FROM EMPLOYEE;
+mysql> SELECT MIN(SALARY) "MIN_SAL" FROM EMPLOYEE;
++---------+
+| MIN_SAL |
++---------+
+|    2000 |
++---------+
+1 row in set (0.00 sec)
+
+
+SELECT AVG(SALARY) FROM EMPLOYEE;
+mysql> SELECT AVG(SALARY) FROM EMPLOYEE;
++-------------+
+| AVG(SALARY) |
++-------------+
+|   4690.0000 |
++-------------+
+1 row in set (0.02 sec)
+
+
+SELECT AVG(SALARY) "AVG SALARY" FROM EMPLOYEE;
+mysql> SELECT AVG(SALARY) "AVG SALARY" FROM EMPLOYEE;
++------------+
+| AVG SALARY |
++------------+
+|  4690.0000 |
++------------+
+1 row in set (0.00 sec)
+
+
+SELECT AVG(AGE) "AVG AGE" FROM EMPLOYEE;
+mysql> SELECT AVG(AGE) "AVG AGE" FROM EMPLOYEE;
++---------+
+| AVG AGE |
++---------+
+| 26.0000 |
++---------+
+1 row in set (0.00 sec)
+
+
+SELECT MIN(FIRST_NAME) FROM EMPLOYEE;
+mysql> SELECT MIN(FIRST_NAME) FROM EMPLOYEE;
++-----------------+
+| MIN(FIRST_NAME) |
++-----------------+
+| ANU             |
++-----------------+
+1 row in set (0.03 sec)
+
+
+SELECT MAX(FIRST_NAME) FROM EMPLOYEE;
+mysql> SELECT MAX(FIRST_NAME) FROM EMPLOYEE;
++-----------------+
+| MAX(FIRST_NAME) |
++-----------------+
+| SWETHA          |
++-----------------+
+1 row in set (0.00 sec)
+
+
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
 
 SELECT * FROM EMPLOYEE ORDER BY FIRST_NAME;
+mysql> SELECT * FROM EMPLOYEE ORDER BY FIRST_NAME;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.06 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY AGE;
+mysql> SELECT * FROM EMPLOYEE ORDER BY AGE;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY SALARY;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY AGE, SALARY;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE ORDER BY SALARY, AGE;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY, AGE;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
 
 SELECT * FROM EMPLOYEE ORDER BY FIRST_NAME ASC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY FIRST_NAME ASC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.01 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY AGE ASC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY AGE ASC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY SALARY ASC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY ASC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY AGE, SALARY ASC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY AGE, SALARY ASC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
+SELECT * FROM EMPLOYEE ORDER BY SALARY, AGE ASC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY, AGE ASC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
 
 SELECT * FROM EMPLOYEE ORDER BY FIRST_NAME DESC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY FIRST_NAME DESC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY AGE DESC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY AGE DESC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY SALARY DESC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY DESC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.01 sec)
+
+
 SELECT * FROM EMPLOYEE ORDER BY AGE, SALARY DESC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY AGE, SALARY DESC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
 
 
-//SELECT FIRST_NAME, MAX(SALAY) FROM EMPLOYEE;
+SELECT * FROM EMPLOYEE ORDER BY SALARY, AGE DESC;
+mysql> SELECT * FROM EMPLOYEE ORDER BY SALARY, AGE DESC;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
+
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+
+SELECT FIRST_NAME, MAX(SALAY) FROM EMPLOYEE;
+mysql> SELECT FIRST_NAME, MAX(SALARY) FROM EMPLOYEE;
+ERROR
 
 SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY = 
 (SELECT MAX(SALARY) FROM EMPLOYEE);
+mysql> SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY =
+    -> (SELECT MAX(SALARY) FROM EMPLOYEE);
++------------+
+| FIRST_NAME |
++------------+
+| SUNITHA    |
++------------+
+1 row in set (0.03 sec)
+
 
 SELECT FIRST_NAME FROM EMPLOYEE WHERE AGE = 
 (SELECT MAX(AGE) FROM EMPLOYEE);
+mysql> SELECT FIRST_NAME FROM EMPLOYEE WHERE AGE =
+    -> (SELECT MAX(AGE) FROM EMPLOYEE);
++------------+
+| FIRST_NAME |
++------------+
+| SUNITHA    |
++------------+
+1 row in set (0.00 sec)
+
 
 SELECT FIRST_NAME FROM EMPLOYEE WHERE AGE = 
 (SELECT MIN(AGE) FROM EMPLOYEE);
+mysql> SELECT FIRST_NAME FROM EMPLOYEE WHERE AGE =
+    -> (SELECT MIN(AGE) FROM EMPLOYEE);
++------------+
+| FIRST_NAME |
++------------+
+| ANU        |
++------------+
+1 row in set (0.00 sec)
+
 
 SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY < 
 (SELECT AVG(SALARY) FROM EMPLOYEE);
+mysql> SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY <
+    -> (SELECT AVG(SALARY) FROM EMPLOYEE);
++------------+
+| FIRST_NAME |
++------------+
+| RAMU       |
+| RAVI       |
+| RAGHU      |
+| PAVAN      |
++------------+
+4 rows in set (0.00 sec)
 
-
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
 
 SELECT MAX(SALARY) FROM EMPLOYEE 
 WHERE SALARY < (SELECT MAX(SALARY) FROM EMPLOYEE);
+mysql> SELECT MAX(SALARY) FROM EMPLOYEE
+    -> WHERE SALARY < (SELECT MAX(SALARY) FROM EMPLOYEE);
++-------------+
+| MAX(SALARY) |
++-------------+
+|        6000 |
++-------------+
+1 row in set (0.00 sec)
+
 
 SELECT MIN(SALARY) FROM EMPLOYEE 
 WHERE SALARY > (SELECT MIN(SALARY) FROM EMPLOYEE);
+mysql> SELECT MIN(SALARY) FROM EMPLOYEE
+    -> WHERE SALARY > (SELECT MIN(SALARY) FROM EMPLOYEE);
++-------------+
+| MIN(SALARY) |
++-------------+
+|        3000 |
++-------------+
+1 row in set (0.00 sec)
 
 SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY = 
 (SELECT MAX(SALARY) FROM EMPLOYEE 
 WHERE SALARY < (SELECT MAX(SALARY) FROM EMPLOYEE));
+mysql> SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY =
+    -> (SELECT MAX(SALARY) FROM EMPLOYEE
+    -> WHERE SALARY < (SELECT MAX(SALARY) FROM EMPLOYEE));
++------------+
+| FIRST_NAME |
++------------+
+| ANU        |
++------------+
+1 row in set (0.00 sec)
+
 
 SELECT * FROM EMPLOYEE WHERE SALARY = 
 (SELECT MIN(SALARY) FROM EMPLOYEE 
 WHERE SALARY > (SELECT MIN(SALARY) FROM EMPLOYEE));
+mysql> SELECT FIRST_NAME FROM EMPLOYEE WHERE SALARY =
+    -> (SELECT MIN(SALARY) FROM EMPLOYEE
+    -> WHERE SALARY > (SELECT MIN(SALARY) FROM EMPLOYEE));
++------------+
+| FIRST_NAME |
++------------+
+| RAVI       |
++------------+
+1 row in set (0.00 sec)
+
 
 
 SELECT ID, FIRST_NAME, LAST_NAME, AGE, SALARY, EMAIL,
 RANK() OVER (ORDER BY SALARY DESC) FROM EMPLOYEE;
+mysql> SELECT ID, FIRST_NAME, LAST_NAME, AGE, SALARY, EMAIL,RANK() OVER (ORDER BY SALARY DESC) FROM EMPLOYEE;
++------+------------+-----------+------+--------+---------+------------------------------------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   | RANK() OVER (ORDER BY SALARY DESC) |
++------+------------+-----------+------+--------+---------+------------------------------------+
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |                                  1 |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |                                  2 |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |                                  3 |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |                                  4 |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |                                  5 |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |                                  6 |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |                                  7 |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |                                  8 |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |                                  9 |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |                                 10 |
++------+------------+-----------+------+--------+---------+------------------------------------+
+10 rows in set (0.10 sec)
 
 
 SELECT ID, FIRST_NAME, LAST_NAME, AGE, SALARY, EMAIL,
-RANK() OVER (ORDER BY SALARY DESC) RANK FROM EMPLOYEE;
+RANK() OVER (ORDER BY SALARY DESC) "RANK" FROM EMPLOYEE;
+mysql> SELECT ID, FIRST_NAME, LAST_NAME, AGE, SALARY, EMAIL,
+    -> RANK() OVER (ORDER BY SALARY DESC) "RANK" FROM EMPLOYEE;
++------+------------+-----------+------+--------+---------+------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   | RANK |
++------+------------+-----------+------+--------+---------+------+
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |    1 |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |    2 |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |    3 |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |    4 |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |    5 |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |    6 |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |    7 |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |    8 |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |    9 |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |   10 |
++------+------------+-----------+------+--------+---------+------+
+10 rows in set (0.00 sec)
+
 
 SELECT * FROM (SELECT ID, FIRST_NAME, LAST_NAME, AGE, SALARY, 
 EMAIL, RANK() OVER(ORDER BY SALARY DESC) RANK FROM EMPLOYEE)
 WHERE RANK = 3;
-
+ERROR 1248 (42000): Every derived table must have its own alias
 
 SELECT * FROM (SELECT ID, FIRST_NAME, LAST_NAME, AGE, SALARY, 
 EMAIL, RANK() OVER(ORDER BY SALARY DESC) RANK FROM EMPLOYEE)
 WHERE RANK = 5;
+ERROR 1248 (42000): Every derived table must have its own alias
 
-INSERT INTO EMPLOYEE VALUES(1, 'RAMU', 'BTM', 22, 4000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(2, 'RAVI', 'RAO', 24, 3000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(3, 'MANU', 'BTM', 23, 5000, 'M@G.IN');
-INSERT INTO EMPLOYEE VALUES(4, 'MURALI', 'RAO', 26, 5500, 'M@G.IN');
-INSERT INTO EMPLOYEE VALUES(5, 'RAGHU', 'JD', 25, 2000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(6, 'PAVAN', 'NAO', 28, 3500, 'P@G.IN');
-INSERT INTO EMPLOYEE VALUES(7, 'ANU', 'JP', 21, 6000, 'A@G.IN');
-INSERT INTO EMPLOYEE VALUES(8, 'SWETHA', 'NAO', 29, 5600, 'W@G.IN');
-INSERT INTO EMPLOYEE VALUES(9, 'SUNITHA', 'JD', 32, 7000, 'SU@G.IN');
-INSERT INTO EMPLOYEE VALUES(10, 'KIRAN', 'JP', 30, 5300, 'K@G.IN');
 
-INSERT INTO EMPLOYEE VALUES(1, 'RAMU', 'BTM', 22, 4000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(2, 'RAVI', 'RAO', 24, 3000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(3, 'MANU', 'BTM', 23, 5000, 'M@G.IN');
-INSERT INTO EMPLOYEE VALUES(4, 'MURALI', 'RAO', 26, 5500, 'M@G.IN');
-INSERT INTO EMPLOYEE VALUES(5, 'RAGHU', 'JD', 25, 2000, 'R@G.IN');
-INSERT INTO EMPLOYEE VALUES(6, 'PAVAN', 'NAO', 28, 3500, 'P@G.IN');
-INSERT INTO EMPLOYEE VALUES(7, 'ANU', 'JP', 21, 6000, 'A@G.IN');
-INSERT INTO EMPLOYEE VALUES(8, 'SWETHA', 'NAO', 29, 5600, 'W@G.IN');
-INSERT INTO EMPLOYEE VALUES(9, 'SUNITHA', 'JD', 32, 7000, 'SU@G.IN');
-INSERT INTO EMPLOYEE VALUES(10, 'KIRAN', 'JP', 30, 5300, 'K@G.IN');
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
+
+
+// INSERT MULTIPLE ROWS
+INSERT INTO EMPLOYEE 
+VALUES
+(1, 'RAMU', 'BTM', 22, 4000, 'R@G.IN'),
+(2, 'RAVI', 'RAO', 24, 3000, 'R@G.IN'),
+(3, 'MANU', 'BTM', 23, 5000, 'M@G.IN'),
+(4, 'MURALI', 'RAO', 26, 5500, 'M@G.IN'),
+(5, 'RAGHU', 'JD', 25, 2000, 'R@G.IN'),
+(6, 'PAVAN', 'NAO', 28, 3500, 'P@G.IN'),
+(7, 'ANU', 'JP', 21, 6000, 'A@G.IN'),
+(8, 'SWETHA', 'NAO', 29, 5600, 'W@G.IN'),
+(9, 'SUNITHA', 'JD', 32, 7000, 'SU@G.IN'),
+(10, 'KIRAN', 'JP', 30, 5300, 'K@G.IN');
+Query OK, 10 rows affected (0.31 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+// INSERT MULTIPLE ROWS
+INSERT INTO EMPLOYEE 
+VALUES
+(1, 'RAMU', 'BTM', 22, 4000, 'R@G.IN'),
+(2, 'RAVI', 'RAO', 24, 3000, 'R@G.IN'),
+(3, 'MANU', 'BTM', 23, 5000, 'M@G.IN'),
+(4, 'MURALI', 'RAO', 26, 5500, 'M@G.IN'),
+(5, 'RAGHU', 'JD', 25, 2000, 'R@G.IN'),
+(6, 'PAVAN', 'NAO', 28, 3500, 'P@G.IN'),
+(7, 'ANU', 'JP', 21, 6000, 'A@G.IN'),
+(8, 'SWETHA', 'NAO', 29, 5600, 'W@G.IN'),
+(9, 'SUNITHA', 'JD', 32, 7000, 'SU@G.IN'),
+(10, 'KIRAN', 'JP', 30, 5300, 'K@G.IN');
+Query OK, 10 rows affected (0.24 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
 
 SELECT * FROM EMPLOYEE;
+mysql> SELECT * FROM EMPLOYEE;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
++------+------------+-----------+------+--------+---------+
+30 rows in set (0.00 sec)
 
 
-SELECT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY, ROWNUM FROM EMPLOYEE;
+SELECT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY, "ROWNUM" FROM EMPLOYEE;
+mysql> SELECT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY, "ROWNUM" FROM EMPLOYEE;
++------+------------+-----------+------+---------+--------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   | SALARY | ROWNUM |
++------+------------+-----------+------+---------+--------+--------+
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 | ROWNUM |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 | ROWNUM |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 | ROWNUM |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 | ROWNUM |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 | ROWNUM |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 | ROWNUM |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 | ROWNUM |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 | ROWNUM |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 | ROWNUM |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 | ROWNUM |
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 | ROWNUM |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 | ROWNUM |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 | ROWNUM |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 | ROWNUM |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 | ROWNUM |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 | ROWNUM |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 | ROWNUM |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 | ROWNUM |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 | ROWNUM |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 | ROWNUM |
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 | ROWNUM |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 | ROWNUM |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 | ROWNUM |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 | ROWNUM |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 | ROWNUM |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 | ROWNUM |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 | ROWNUM |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 | ROWNUM |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 | ROWNUM |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 | ROWNUM |
++------+------------+-----------+------+---------+--------+--------+
+30 rows in set (0.00 sec)
 
 SELECT * FROM EMPLOYEE WHERE ROWNUM BETWEEN 10 AND 20;
+Empty set, 1 warning (0.00 sec)
+
 
 SELECT * FROM (SELECT ID, FIRST_NAME, LAST_NAME, AGE, 
 	       EMAIL, SALARY, ROWNUM AS RN FROM EMPLOYEE)
 	       WHERE RN <= 10;
+ERROR 1248 (42000): Every derived table must have its own alias
 
 
 SELECT * FROM (SELECT ID, FIRST_NAME, LAST_NAME, AGE, 
 	       EMAIL, SALARY, ROWNUM AS RN FROM EMPLOYEE)
 	       WHERE RN BETWEEN 11 AND 20;
+ERROR 1248 (42000): Every derived table must have its own alias
 
 
 SELECT * FROM (SELECT ID, FIRST_NAME, LAST_NAME, AGE, 
 	       EMAIL, SALARY, ROWNUM AS RN FROM EMPLOYEE)
 	       WHERE RN BETWEEN 21 AND 30;
+ERROR 1248 (42000): Every derived table must have its own alias
+
 
 SELECT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY FROM EMPLOYEE;
+mysql> SELECT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY FROM EMPLOYEE;
++------+------------+-----------+------+---------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   | SALARY |
++------+------------+-----------+------+---------+--------+
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 |
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 |
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 |
++------+------------+-----------+------+---------+--------+
+30 rows in set (0.00 sec)
+
 
 SELECT DISTINCT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY FROM EMPLOYEE;
+mysql> SELECT DISTINCT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY FROM EMPLOYEE;
++------+------------+-----------+------+---------+--------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   | SALARY |
++------+------------+-----------+------+---------+--------+
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 |
++------+------------+-----------+------+---------+--------+
+10 rows in set (0.05 sec)
+
 
 SELECT * FROM EMPLOYEE GROUP BY 
 		ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY;
+mysql> SELECT * FROM EMPLOYEE GROUP BY ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
++------+------------+-----------+------+--------+---------+
+10 rows in set (0.00 sec)
+
 
 SELECT ID, FIRST_NAME, LAST_NAME, AGE, 
 	EMAIL, SALARY, ROWID FROM EMPLOYEE;
+mysql> SELECT ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY, 'ROWID' FROM EMPLOYEE;
++------+------------+-----------+------+---------+--------+-------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   | SALARY | ROWID |
++------+------------+-----------+------+---------+--------+-------+
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 | ROWID |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 | ROWID |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 | ROWID |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 | ROWID |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 | ROWID |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 | ROWID |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 | ROWID |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 | ROWID |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 | ROWID |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 | ROWID |
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 | ROWID |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 | ROWID |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 | ROWID |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 | ROWID |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 | ROWID |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 | ROWID |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 | ROWID |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 | ROWID |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 | ROWID |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 | ROWID |
+|    1 | RAMU       | BTM       |   22 | R@G.IN  |   4000 | ROWID |
+|    2 | RAVI       | RAO       |   24 | R@G.IN  |   3000 | ROWID |
+|    3 | MANU       | BTM       |   23 | M@G.IN  |   5000 | ROWID |
+|    4 | MURALI     | RAO       |   26 | M@G.IN  |   5500 | ROWID |
+|    5 | RAGHU      | JD        |   25 | R@G.IN  |   2000 | ROWID |
+|    6 | PAVAN      | NAO       |   28 | P@G.IN  |   3500 | ROWID |
+|    7 | ANU        | JP        |   21 | A@G.IN  |   6000 | ROWID |
+|    8 | SWETHA     | NAO       |   29 | W@G.IN  |   5600 | ROWID |
+|    9 | SUNITHA    | JD        |   32 | SU@G.IN |   7000 | ROWID |
+|   10 | KIRAN      | JP        |   30 | K@G.IN  |   5300 | ROWID |
++------+------------+-----------+------+---------+--------+-------+
+30 rows in set (0.00 sec)
+
 
 SELECT MIN(ROWID) FROM EMPLOYEE;
+ERROR 1054 (42S22): Unknown column 'ROWID' in 'field list'
+
+
 SELECT MAX(ROWID) FROM EMPLOYEE;
+ERROR 1054 (42S22): Unknown column 'ROWID' in 'field list'
+
 
 DELETE FROM EMPLOYEE WHERE ROWID NOT IN 
 (SELECT MIN(ROWID) FROM EMPLOYEE GROUP BY 
 		ID, FIRST_NAME, LAST_NAME, AGE, EMAIL, SALARY);
-
+ERROR 1054 (42S22): Unknown column 'ROWID' in 'field list'
 
 
 SELECT * FROM EMPLOYEE;
-
+mysql> SELECT * FROM EMPLOYEE;
++------+------------+-----------+------+--------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | SALARY | EMAIL   |
++------+------------+-----------+------+--------+---------+
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
+|    1 | RAMU       | BTM       |   22 |   4000 | R@G.IN  |
+|    2 | RAVI       | RAO       |   24 |   3000 | R@G.IN  |
+|    3 | MANU       | BTM       |   23 |   5000 | M@G.IN  |
+|    4 | MURALI     | RAO       |   26 |   5500 | M@G.IN  |
+|    5 | RAGHU      | JD        |   25 |   2000 | R@G.IN  |
+|    6 | PAVAN      | NAO       |   28 |   3500 | P@G.IN  |
+|    7 | ANU        | JP        |   21 |   6000 | A@G.IN  |
+|    8 | SWETHA     | NAO       |   29 |   5600 | W@G.IN  |
+|    9 | SUNITHA    | JD        |   32 |   7000 | SU@G.IN |
+|   10 | KIRAN      | JP        |   30 |   5300 | K@G.IN  |
++------+------------+-----------+------+--------+---------+
+30 rows in set (0.00 sec)
 
 
 
