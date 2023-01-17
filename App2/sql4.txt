@@ -1,10 +1,23 @@
 DROP TABLE STUDENT;
+
+***********************************************************************************************************************************************************************
 CREATE TABLE STUDENT(ID NUMBER,
 		     FIRST_NAME VARCHAR2(90),
 		     LAST_NAME VARCHAR2(90),
 		     AGE NUMBER,
 		     EMAIL VARCHAR2(90));
+mysql> CREATE TABLE STUDENT
+    -> (
+    ->   ID INT,
+    ->   FIRST_NAME VARCHAR(90),
+    ->   LAST_NAME VARCHAR(90),
+    ->   AGE INT,
+    ->   EMAIL VARCHAR(90)
+    -> );
+Query OK, 0 rows affected (0.45 sec)
 
+
+***********************************************************************************************************************************************************************
 CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
 		     STREET_NAME VARCHAR2(90),
 		     CITY VARCHAR2(90),
@@ -12,14 +25,45 @@ CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
 		     STUDENT_ID NUMBER,
 CONSTRAINT ADDRESS_FK1 FOREIGN KEY(STUDENT_ID) 
 				REFERENCES STUDENT(ID));
+mysql> CREATE TABLE ADDRESS
+    -> (
+    -> HOUSE_NO VARCHAR(90),
+    -> STREET_NAME VARCHAR(90),
+    -> CITY VARCHAR(90),
+    -> STATE VARCHAR(90),
+    -> STUDENT_ID INT,
+    -> CONSTRAINT ADDRESS_FK1 FOREIGN KEY(STUDENT_ID) REFERENCES STUDENT(ID));
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'ADDRESS_FK1' in the referenced table 'student'
+
+
+***********************************************************************************************************************************************************************
 
 
 DROP TABLE STUDENT;
+mysql> DROP TABLE STUDENT;
+Query OK, 0 rows affected (0.33 sec)
+
+
+***********************************************************************************************************************************************************************
+
+
 CREATE TABLE STUDENT(ID NUMBER UNIQUE,
 		     FIRST_NAME VARCHAR2(90),
 		     LAST_NAME VARCHAR2(90),
 		     AGE NUMBER,
 		     EMAIL VARCHAR2(90));
+mysql> CREATE TABLE STUDENT
+    -> (
+    ->   ID INT UNIQUE,
+    ->   FIRST_NAME VARCHAR(90),
+    ->   LAST_NAME VARCHAR(90),
+    ->   AGE INT,
+    ->   EMAIL VARCHAR(90)
+    -> );
+Query OK, 0 rows affected (0.23 sec)
+
+
+***********************************************************************************************************************************************************************
 
 
 CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
@@ -29,42 +73,228 @@ CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
 		     STUDENT_ID NUMBER,
 CONSTRAINT ADDRESS_FK1 FOREIGN KEY(STUDENT_ID) 
 				REFERENCES STUDENT(ID));
+mysql> CREATE TABLE ADDRESS
+    -> (
+    ->   HOUSE_NO VARCHAR(90),
+    ->   STREET_NAME VARCHAR(90),
+    ->   CITY VARCHAR(90),
+    ->   STATE VARCHAR(90),
+    ->   STUDENT_ID INT,
+    ->   CONSTRAINT ADDRESS_FK1 FOREIGN KEY(STUDENT_ID)
+    ->   REFERENCES STUDENT(ID));
+Query OK, 0 rows affected (1.49 sec)
+
+
+***********************************************************************************************************************************************************************
+
 
 INSERT INTO STUDENT VALUES(1, 'RAMU', 'B', 22, 'R@R.COM');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   |
++------+------------+-----------+------+---------+
+|    1 | RAMU       | B         |   22 | R@R.COM |
++------+------------+-----------+------+---------+
+1 row in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 INSERT INTO ADDRESS VALUES('123/B', 'BTM', 'BLR', 'KAR', 1);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/B    | BTM         | BLR  | KAR   |          1 |
++----------+-------------+------+-------+------------+
+1 row in set (0.00 sec)
+
+
 
 INSERT INTO STUDENT VALUES(2, 'MANU', 'B', 24, 'M@R.COM');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   |
++------+------------+-----------+------+---------+
+|    1 | RAMU       | B         |   22 | R@R.COM |
+|    2 | MANU       | B         |   24 | M@R.COM |
++------+------------+-----------+------+---------+
+2 rows in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 INSERT INTO ADDRESS VALUES('123/C', 'JPN', 'BLR', 'KAR', 2);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/B    | BTM         | BLR  | KAR   |          1 |
+| 123/C    | JPN         | BLR  | KAR   |          2 |
++----------+-------------+------+-------+------------+
+2 rows in set (0.00 sec)
+
+
+
 
 INSERT INTO STUDENT VALUES(3, 'VIJAY', 'B', 26, 'V@R.COM');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   |
++------+------------+-----------+------+---------+
+|    1 | RAMU       | B         |   22 | R@R.COM |
+|    2 | MANU       | B         |   24 | M@R.COM |
+|    3 | VIJAY      | B         |   26 | V@R.COM |
++------+------------+-----------+------+---------+
+3 rows in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 INSERT INTO ADDRESS VALUES('123/V', 'JN', 'BLR', 'KAR', 3);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/B    | BTM         | BLR  | KAR   |          1 |
+| 123/C    | JPN         | BLR  | KAR   |          2 |
+| 123/V    | JN          | BLR  | KAR   |          3 |
++----------+-------------+------+-------+------------+
+3 rows in set (0.00 sec)
+
+
+
 
 INSERT INTO ADDRESS VALUES('123/R', 'JN', 'BLR', 'KAR', 4);//ERROR
+mysql> INSERT INTO ADDRESS VALUES('123/R', 'JN', 'BLR', 'KAR', 4);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`db`.`address`, CONSTRAINT `ADDRESS_FK1` FOREIGN KEY (`STUDENT_ID`) REFERENCES `student` (`ID`))
+
+
 
 INSERT INTO STUDENT VALUES(4, 'MURALI', 'B', 26, 'M@R.COM');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   |
++------+------------+-----------+------+---------+
+|    1 | RAMU       | B         |   22 | R@R.COM |
+|    2 | MANU       | B         |   24 | M@R.COM |
+|    3 | VIJAY      | B         |   26 | V@R.COM |
+|    4 | MURALI     | B         |   26 | M@R.COM |
++------+------------+-----------+------+---------+
+4 rows in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 INSERT INTO ADDRESS VALUES('123/V', 'JN', 'BLR', 'KAR', 4);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/B    | BTM         | BLR  | KAR   |          1 |
+| 123/C    | JPN         | BLR  | KAR   |          2 |
+| 123/V    | JN          | BLR  | KAR   |          3 |
+| 123/V    | JN          | BLR  | KAR   |          4 |
++----------+-------------+------+-------+------------+
+4 rows in set (0.00 sec)
+
+
 
 DELETE FROM STUDENT WHERE ID = 4; //ERROR
+mysql> DELETE FROM STUDENT WHERE ID = 4;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`db`.`address`, CONSTRAINT `ADDRESS_FK1` FOREIGN KEY (`STUDENT_ID`) REFERENCES `student` (`ID`))
+
+
 
 DELETE FROM ADDRESS WHERE STUDENT_ID = 4;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/B    | BTM         | BLR  | KAR   |          1 |
+| 123/C    | JPN         | BLR  | KAR   |          2 |
+| 123/V    | JN          | BLR  | KAR   |          3 |
++----------+-------------+------+-------+------------+
+3 rows in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 DELETE FROM STUDENT WHERE ID = 4;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+---------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL   |
++------+------------+-----------+------+---------+
+|    1 | RAMU       | B         |   22 | R@R.COM |
+|    2 | MANU       | B         |   24 | M@R.COM |
+|    3 | VIJAY      | B         |   26 | V@R.COM |
++------+------------+-----------+------+---------+
+3 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************************************************************
+
 
 DROP TABLE STUDENT;  //ERROR
+mysql> DROP TABLE STUDENT;
+ERROR 3730 (HY000): Cannot drop table 'student' referenced by a foreign key constraint 'ADDRESS_FK1' on table 'address'.
+
+
+***********************************************************************************************************************************************************************
+
 
 DELETE FROM ADDRESS;
+Query OK, 3 rows affected (0.04 sec)
+
+mysql> DELETE FROM ADDRESS;
+Query OK, 0 rows affected (0.00 sec)
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
 DROP TABLE STUDENT;  //ERROR
+mysql> DROP TABLE STUDENT;
+ERROR 3730 (HY000): Cannot drop table 'student' referenced by a foreign key constraint 'ADDRESS_FK1' on table 'address'.
+
 
 DROP TABLE ADDRESS;
+mysql> DROP TABLE ADDRESS;
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> SELECT * FROM ADDRESS;
+ERROR 1146 (42S02): Table 'db.address' doesn't exist
+
+
+
 DROP TABLE STUDENT;  
+mysql> DROP TABLE STUDENT;
+Query OK, 0 rows affected (0.08 sec)
 
+mysql> SELECT * FROM STUDENT;
+ERROR 1146 (42S02): Table 'db.student' doesn't exist
 
-
+***********************************************************************************************************************************************************************
 CREATE TABLE STUDENT(ID NUMBER UNIQUE,
 		     FIRST_NAME VARCHAR2(90),
 		     LAST_NAME VARCHAR2(90),
 		     AGE NUMBER,
 		     EMAIL VARCHAR2(90));
+mysql> CREATE TABLE STUDENT
+    -> (
+    ->   ID INT UNIQUE,
+    ->   FIRST_NAME VARCHAR(90),
+    ->   LAST_NAME VARCHAR(90),
+    ->   AGE INT,
+    ->   EMAIL VARCHAR(90)
+    -> );
+Query OK, 0 rows affected (0.28 sec)
 
+
+***********************************************************************************************************************************************************************
 CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
 		     STREET_NAME VARCHAR2(90),
 		     CITY VARCHAR2(90),
@@ -72,26 +302,122 @@ CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
 		     STUDENT_ID NUMBER,
 CONSTRAINT ADDRESS_FK1 FOREIGN KEY(STUDENT_ID) 
 				REFERENCES STUDENT(ID));
+mysql> CREATE TABLE ADDRESS
+    -> (
+    ->   HOUSE_NO VARCHAR(90),
+    ->   STREET_NAME VARCHAR(90),
+    ->   CITY VARCHAR(90),
+    ->   STATE VARCHAR(90),
+    ->   STUDENT_ID INT,
+    ->   CONSTRAINT ADDRESS_FK1 FOREIGN KEY(STUDENT_ID)
+    ->   REFERENCES STUDENT(ID)
+    -> );
+Query OK, 0 rows affected (0.37 sec)
 
 
+***********************************************************************************************************************************************************************
 
 
 
 INSERT INTO STUDENT VALUES(1, 'RAMU', 'B', 22, 'R@GMAIL.COM');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+-------------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL       |
++------+------------+-----------+------+-------------+
+|    1 | RAMU       | B         |   22 | R@GMAIL.COM |
++------+------------+-----------+------+-------------+
+1 row in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 INSERT INTO ADDRESS(HOUSE_NO, STREET_NAME, CITY, STATE)
 		VALUES('123/T', 'BTM', 'BLR', 'KAR');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/T    | BTM         | BLR  | KAR   |       NULL |
++----------+-------------+------+-------+------------+
+1 row in set (0.00 sec)
+
+
 
 UPDATE ADDRESS SET STUDENT_ID = 3 WHERE HOUSE_NO = '123/T';//ERROR
+mysql> UPDATE ADDRESS SET STUDENT_ID = 3 WHERE HOUSE_NO = '123/T';
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`db`.`address`, CONSTRAINT `ADDRESS_FK1` FOREIGN KEY (`STUDENT_ID`) REFERENCES `student` (`ID`))
+
+
+
 UPDATE ADDRESS SET STUDENT_ID = 1 WHERE HOUSE_NO = '123/T';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/T    | BTM         | BLR  | KAR   |          1 |
++----------+-------------+------+-------+------------+
+1 row in set (0.00 sec)
+
+
 
 INSERT INTO STUDENT(FIRST_NAME, LAST_NAME, AGE, EMAIL) 
-		VALUES('MANU', 'B', 22, 'R@GMAIL.COM');
+		VALUES('MANU', 'B', 22, 'R@GMAIL.COM');	
+mysql> INSERT INTO STUDENT(FIRST_NAME, LAST_NAME, AGE, EMAIL) VALUES('MANU', 'B', 22, 'R@GMAIL.COM');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+-------------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL       |
++------+------------+-----------+------+-------------+
+|    1 | RAMU       | B         |   22 | R@GMAIL.COM |
+| NULL | MANU       | B         |   22 | R@GMAIL.COM |
++------+------------+-----------+------+-------------+
+2 rows in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 INSERT INTO ADDRESS(HOUSE_NO, STREET_NAME, CITY, STATE)
 		VALUES('123/Y', 'BTM', 'BLR', 'KAR');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/T    | BTM         | BLR  | KAR   |          1 |
+| 123/Y    | BTM         | BLR  | KAR   |       NULL |
++----------+-------------+------+-------+------------+
+2 rows in set (0.00 sec)
+
+
 
 UPDATE STUDENT SET ID = 2 WHERE FIRST_NAME = 'MANU';
-UPDATE ADDRESS SET STUDENT_ID = 2 WHERE HOUSE_NO= '123/Y';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
+mysql> SELECT * FROM STUDENT;
++------+------------+-----------+------+-------------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | EMAIL       |
++------+------------+-----------+------+-------------+
+|    1 | RAMU       | B         |   22 | R@GMAIL.COM |
+|    2 | MANU       | B         |   22 | R@GMAIL.COM |
++------+------------+-----------+------+-------------+
+2 rows in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+UPDATE ADDRESS SET STUDENT_ID = 2 WHERE HOUSE_NO= '123/Y';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+------------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | STUDENT_ID |
++----------+-------------+------+-------+------------+
+| 123/T    | BTM         | BLR  | KAR   |          1 |
+| 123/Y    | BTM         | BLR  | KAR   |          2 |
++----------+-------------+------+-------+------------+
+2 rows in set (0.00 sec)
 
 
 
