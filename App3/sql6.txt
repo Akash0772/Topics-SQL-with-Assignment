@@ -1,54 +1,316 @@
+***********************************************************************************************************************************************************************
+
 DROP TABLE PERSON CASCADE CONSTRAINTS;
+
+***********************************************************************************************************************************************************************
+
 CREATE TABLE PERSON (ID NUMBER PRIMARY KEY,
 		     FIRST_NAME VARCHAR2(90),
 		     LAST_NAME VARCHAR2(90),
-		     AGE NUMBER);
+			AGE NUMBER);
+Query OK, 0 rows affected (0.26 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| employee     |
+| person       |
+| student      |
+| tab1         |
+| tab11        |
+| tab12        |
+| tab2         |
+| tab3         |
+| tab4         |
+| tab5         |
+| tab6         |
+| tab7         |
+| tab8         |
+| tab9         |
++--------------+
+14 rows in set (0.02 sec)
+
+
+***********************************************************************************************************************************************************************
 
 DROP TABLE MAIL_ACCOUNT;
+
+***********************************************************************************************************************************************************************
+
 CREATE TABLE MAIL_ACCOUNT(USERNAME VARCHAR2(90),
                      PASSWORD VARCHAR2(90),
 		     PROVIDER VARCHAR2(90),
 		     PERSON_ID NUMBER,
 CONSTRAINT MK_FK1 FOREIGN KEY(PERSON_ID) 
 			REFERENCES PERSON(ID));
+Query OK, 0 rows affected (0.94 sec)
 
-INSERT INTO PERSON VALUES(1, 'RAMU', 'ABC', 22);
-INSERT INTO PERSON VALUES(2, 'MANU', 'XYZ', 24);
-INSERT INTO PERSON VALUES(3, 'SWETHA', 'TEST', 21);
-INSERT INTO PERSON VALUES(4, 'KUMAR', 'BLR', 23);
-INSERT INTO PERSON VALUES(5, 'MURALI', 'BLR', 23);
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| employee     |
+| mail_account |
+| person       |
+| student      |
+| tab1         |
+| tab11        |
+| tab12        |
+| tab2         |
+| tab3         |
+| tab4         |
+| tab5         |
+| tab6         |
+| tab7         |
+| tab8         |
+| tab9         |
++--------------+
+15 rows in set (0.01 sec)
 
-INSERT INTO MAIL_ACCOUNT VALUES('ABC', 'XYZ', 'GMAIL', 1);
-INSERT INTO MAIL_ACCOUNT VALUES('RAMU', 'XYZ', 'GMAIL', 1);
-INSERT INTO MAIL_ACCOUNT VALUES('RAMU1', 'XYZ', 'HOTMAIL', 1);
-INSERT INTO MAIL_ACCOUNT VALUES('MANU', 'XYZ', 'HOTMAIL', 2);
-INSERT INTO MAIL_ACCOUNT VALUES('MANU', 'XYZ', 'GMAIL', 2);
-INSERT INTO MAIL_ACCOUNT VALUES('SWETHA', 'XYZ', 'GMAIL', 3);
-INSERT INTO MAIL_ACCOUNT VALUES('KUMAR', 'XYZ', 'GMAIL', 4);
+
+***********************************************************************************************************************************************************************
+
+// INSERT MULTIPLE ROW 
+INSERT INTO PERSON 
+VALUES
+(1, 'RAMU', 'ABC', 22),
+(2, 'MANU', 'XYZ', 24),
+(3, 'SWETHA', 'TEST', 21),
+(4, 'KUMAR', 'BLR', 23),
+(5, 'MURALI', 'BLR', 23);
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FIRST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
+|  3 | SWETHA     | TEST      |   21 |
+|  4 | KUMAR      | BLR       |   23 |
+|  5 | MURALI     | BLR       |   23 |
++----+------------+-----------+------+
+5 rows in set (0.00 sec)
+
+
+//INSERT MULTIPLE ROW
+INSERT INTO MAIL_ACCOUNT 
+VALUES
+('ABC', 'XYZ', 'GMAIL', 1),
+('RAMU', 'XYZ', 'GMAIL', 1),
+('RAMU1', 'XYZ', 'HOTMAIL', 1),
+('MANU', 'XYZ', 'HOTMAIL', 2),
+('MANU', 'XYZ', 'GMAIL', 2),
+('SWETHA', 'XYZ', 'GMAIL', 3),
+('KUMAR', 'XYZ', 'GMAIL', 4);
+Query OK, 7 rows affected (0.09 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM MAIL_ACCOUNT;
++----------+----------+----------+-----------+
+| USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----------+----------+----------+-----------+
+| ABC      | XYZ      | GMAIL    |         1 |
+| RAMU     | XYZ      | GMAIL    |         1 |
+| RAMU1    | XYZ      | HOTMAIL  |         1 |
+| MANU     | XYZ      | HOTMAIL  |         2 |
+| MANU     | XYZ      | GMAIL    |         2 |
+| SWETHA   | XYZ      | GMAIL    |         3 |
+| KUMAR    | XYZ      | GMAIL    |         4 |
++----------+----------+----------+-----------+
+7 rows in set (0.00 sec)
+
+
 INSERT INTO MAIL_ACCOUNT(USERNAME, PASSWORD, PROVIDER) 
 	VALUES('USER1', 'XYZ', 'GMAIL');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> SELECT * FROM MAIL_ACCOUNT;
++----------+----------+----------+-----------+
+| USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----------+----------+----------+-----------+
+| ABC      | XYZ      | GMAIL    |         1 |
+| RAMU     | XYZ      | GMAIL    |         1 |
+| RAMU1    | XYZ      | HOTMAIL  |         1 |
+| MANU     | XYZ      | HOTMAIL  |         2 |
+| MANU     | XYZ      | GMAIL    |         2 |
+| SWETHA   | XYZ      | GMAIL    |         3 |
+| KUMAR    | XYZ      | GMAIL    |         4 |
+| USER1    | XYZ      | GMAIL    |      NULL |
++----------+----------+----------+-----------+
+8 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************************************************************
 
 SELECT * FROM PERSON;
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FIRST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
+|  3 | SWETHA     | TEST      |   21 |
+|  4 | KUMAR      | BLR       |   23 |
+|  5 | MURALI     | BLR       |   23 |
++----+------------+-----------+------+
+5 rows in set (0.00 sec)
+
+
 SELECT * FROM MAIL_ACCOUNT;
+mysql> SELECT * FROM MAIL_ACCOUNT;
++----------+----------+----------+-----------+
+| USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----------+----------+----------+-----------+
+| ABC      | XYZ      | GMAIL    |         1 |
+| RAMU     | XYZ      | GMAIL    |         1 |
+| RAMU1    | XYZ      | HOTMAIL  |         1 |
+| MANU     | XYZ      | HOTMAIL  |         2 |
+| MANU     | XYZ      | GMAIL    |         2 |
+| SWETHA   | XYZ      | GMAIL    |         3 |
+| KUMAR    | XYZ      | GMAIL    |         4 |
+| USER1    | XYZ      | GMAIL    |      NULL |
++----------+----------+----------+-----------+
+8 rows in set (0.00 sec)
+
+
 SELECT * FROM PERSON WHERE FIRST_NAME = 'RAMU';
+mysql> SELECT * FROM PERSON WHERE FIRST_NAME = 'RAMU';
++----+------------+-----------+------+
+| ID | FIRST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
++----+------------+-----------+------+
+1 row in set (0.00 sec)
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 SELECT * FROM MAIL_ACCOUNT WHERE USERNAME = 'RAMU1';
+mysql> SELECT * FROM MAIL_ACCOUNT WHERE USERNAME = 'RAMU1';
++----------+----------+----------+-----------+
+| USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----------+----------+----------+-----------+
+| RAMU1    | XYZ      | HOTMAIL  |         1 |
++----------+----------+----------+-----------+
+1 row in set (0.00 sec)
+
 
 SELECT * FROM MAIL_ACCOUNT WHERE PERSON_ID = 3;
+mysql> SELECT * FROM MAIL_ACCOUNT WHERE PERSON_ID = 3;
++----------+----------+----------+-----------+
+| USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----------+----------+----------+-----------+
+| SWETHA   | XYZ      | GMAIL    |         3 |
++----------+----------+----------+-----------+
+1 row in set (0.00 sec)
+
 
 SELECT * FROM MAIL_ACCOUNT WHERE PERSON_ID = 
 (SELECT ID FROM PERSON WHERE FIRST_NAME = 'RAMU');
 
 SELECT * FROM PERSON WHERE ID =
 (SELECT PERSON_ID FROM MAIL_ACCOUNT WHERE USERNAME = 'RAMU');
+mysql> SELECT * FROM MAIL_ACCOUNT WHERE PERSON_ID =
+    -> (
+    ->   SELECT ID FROM PERSON WHERE FIRST_NAME = 'RAMU'
+    -> );
++----------+----------+----------+-----------+
+| USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----------+----------+----------+-----------+
+| ABC      | XYZ      | GMAIL    |         1 |
+| RAMU     | XYZ      | GMAIL    |         1 |
+| RAMU1    | XYZ      | HOTMAIL  |         1 |
++----------+----------+----------+-----------+
+3 rows in set (0.00 sec)
+
 
 SELECT * FROM PERSON, MAIL_ACCOUNT WHERE PERSON.ID = MAIL_ACCOUNT.PERSON_ID;
+mysql> SELECT * FROM PERSON, MAIL_ACCOUNT WHERE PERSON.ID = MAIL_ACCOUNT.PERSON_ID;
++----+------------+-----------+------+----------+----------+----------+-----------+
+| ID | FIRST_NAME | LAST_NAME | AGE  | USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----+------------+-----------+------+----------+----------+----------+-----------+
+|  1 | RAMU       | ABC       |   22 | ABC      | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU     | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU1    | XYZ      | HOTMAIL  |         1 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | HOTMAIL  |         2 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | GMAIL    |         2 |
+|  3 | SWETHA     | TEST      |   21 | SWETHA   | XYZ      | GMAIL    |         3 |
+|  4 | KUMAR      | BLR       |   23 | KUMAR    | XYZ      | GMAIL    |         4 |
++----+------------+-----------+------+----------+----------+----------+-----------+
+7 rows in set (0.00 sec)
+
+
 SELECT * FROM PERSON P, MAIL_ACCOUNT M WHERE P.ID = M.PERSON_ID;
+mysql> SELECT * FROM PERSON P, MAIL_ACCOUNT A WHERE P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+----------+----------+-----------+
+| ID | FIRST_NAME | LAST_NAME | AGE  | USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----+------------+-----------+------+----------+----------+----------+-----------+
+|  1 | RAMU       | ABC       |   22 | ABC      | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU     | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU1    | XYZ      | HOTMAIL  |         1 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | HOTMAIL  |         2 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | GMAIL    |         2 |
+|  3 | SWETHA     | TEST      |   21 | SWETHA   | XYZ      | GMAIL    |         3 |
+|  4 | KUMAR      | BLR       |   23 | KUMAR    | XYZ      | GMAIL    |         4 |
++----+------------+-----------+------+----------+----------+----------+-----------+
+7 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************************************************************
 
 SELECT * FROM PERSON P INNER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
-SELECT * FROM PERSON P LEFT OUTER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
-SELECT * FROM PERSON P RIGHT OUTER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
-SELECT * FROM PERSON P FULL OUTER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
+mysql> SELECT * FROM PERSON P INNER JOIN MAIL_ACCOUNT A ON P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+----------+----------+-----------+
+| ID | FIRST_NAME | LAST_NAME | AGE  | USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----+------------+-----------+------+----------+----------+----------+-----------+
+|  1 | RAMU       | ABC       |   22 | ABC      | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU     | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU1    | XYZ      | HOTMAIL  |         1 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | HOTMAIL  |         2 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | GMAIL    |         2 |
+|  3 | SWETHA     | TEST      |   21 | SWETHA   | XYZ      | GMAIL    |         3 |
+|  4 | KUMAR      | BLR       |   23 | KUMAR    | XYZ      | GMAIL    |         4 |
++----+------------+-----------+------+----------+----------+----------+-----------+
+7 rows in set (0.00 sec)
 
+
+SELECT * FROM PERSON P LEFT OUTER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
+mysql> SELECT * FROM PERSON P LEFT OUTER JOIN MAIL_ACCOUNT A ON P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+----------+----------+-----------+
+| ID | FIRST_NAME | LAST_NAME | AGE  | USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++----+------------+-----------+------+----------+----------+----------+-----------+
+|  1 | RAMU       | ABC       |   22 | ABC      | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU     | XYZ      | GMAIL    |         1 |
+|  1 | RAMU       | ABC       |   22 | RAMU1    | XYZ      | HOTMAIL  |         1 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | HOTMAIL  |         2 |
+|  2 | MANU       | XYZ       |   24 | MANU     | XYZ      | GMAIL    |         2 |
+|  3 | SWETHA     | TEST      |   21 | SWETHA   | XYZ      | GMAIL    |         3 |
+|  4 | KUMAR      | BLR       |   23 | KUMAR    | XYZ      | GMAIL    |         4 |
+|  5 | MURALI     | BLR       |   23 | NULL     | NULL     | NULL     |      NULL |
++----+------------+-----------+------+----------+----------+----------+-----------+
+8 rows in set (0.00 sec)
+
+
+SELECT * FROM PERSON P RIGHT OUTER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
+mysql> SELECT * FROM PERSON P RIGHT OUTER JOIN MAIL_ACCOUNT A ON P.ID = A.PERSON_ID;
++------+------------+-----------+------+----------+----------+----------+-----------+
+| ID   | FIRST_NAME | LAST_NAME | AGE  | USERNAME | PASSWORD | PROVIDER | PERSON_ID |
++------+------------+-----------+------+----------+----------+----------+-----------+
+|    1 | RAMU       | ABC       |   22 | ABC      | XYZ      | GMAIL    |         1 |
+|    1 | RAMU       | ABC       |   22 | RAMU     | XYZ      | GMAIL    |         1 |
+|    1 | RAMU       | ABC       |   22 | RAMU1    | XYZ      | HOTMAIL  |         1 |
+|    2 | MANU       | XYZ       |   24 | MANU     | XYZ      | HOTMAIL  |         2 |
+|    2 | MANU       | XYZ       |   24 | MANU     | XYZ      | GMAIL    |         2 |
+|    3 | SWETHA     | TEST      |   21 | SWETHA   | XYZ      | GMAIL    |         3 |
+|    4 | KUMAR      | BLR       |   23 | KUMAR    | XYZ      | GMAIL    |         4 |
+| NULL | NULL       | NULL      | NULL | USER1    | XYZ      | GMAIL    |      NULL |
++------+------------+-----------+------+----------+----------+----------+-----------+
+8 rows in set (0.00 sec)
+
+
+SELECT * FROM PERSON P FULL OUTER JOIN MAIL_ACCOUNT M ON P.ID = M.PERSON_ID;
+mysql> SELECT * FROM PERSON P FULL OUTER JOIN MAIL_ACCOUNT A ON P.ID = A.PERSON_ID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FULL OUTER JOIN MAIL_ACCOUNT A ON P.ID = A.PERSON_ID' at line 1
 
 
 
