@@ -1,10 +1,87 @@
+***********************************************************************************************************************************************************************
+
 DROP TABLE PERSON;
+Query OK, 0 rows affected (1.38 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| address      |
+| employee     |
+| student      |
+| tab1         |
+| tab11        |
+| tab12        |
+| tab2         |
+| tab3         |
+| tab4         |
+| tab5         |
+| tab6         |
+| tab7         |
+| tab8         |
+| tab9         |
++--------------+
+14 rows in set (0.00 sec)
+
+***********************************************************************************************************************************************************************
+
 CREATE TABLE PERSON (ID NUMBER PRIMARY KEY,
 		     FIRST_NAME VARCHAR2(90),
 		     LAST_NAME VARCHAR2(90),
 		     AGE NUMBER);
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| address      |
+| employee     |
+| person       |
+| student      |
+| tab1         |
+| tab11        |
+| tab12        |
+| tab2         |
+| tab3         |
+| tab4         |
+| tab5         |
+| tab6         |
+| tab7         |
+| tab8         |
+| tab9         |
++--------------+
+15 rows in set (0.00 sec)
+
+***********************************************************************************************************************************************************************
 
 DROP TABLE ADDRESS;
+Query OK, 0 rows affected (1.39 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| employee     |
+| person       |
+| student      |
+| tab1         |
+| tab11        |
+| tab12        |
+| tab2         |
+| tab3         |
+| tab4         |
+| tab5         |
+| tab6         |
+| tab7         |
+| tab8         |
+| tab9         |
++--------------+
+14 rows in set (0.01 sec)
+
+
+***********************************************************************************************************************************************************************
 
 CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
                      STREET_NAME VARCHAR2(90),
@@ -13,56 +90,385 @@ CREATE TABLE ADDRESS(HOUSE_NO VARCHAR2(90),
 		     PERSON_ID NUMBER UNIQUE,
 CONSTRAINT ADDRESS_FK1 FOREIGN KEY(PERSON_ID) 
 			REFERENCES PERSON(ID));
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| address      |
+| employee     |
+| person       |
+| student      |
+| tab1         |
+| tab11        |
+| tab12        |
+| tab2         |
+| tab3         |
+| tab4         |
+| tab5         |
+| tab6         |
+| tab7         |
+| tab8         |
+| tab9         |
++--------------+
+15 rows in set (0.02 sec)
+
+***********************************************************************************************************************************************************************
 
 
-
-
-
+***********************************************************************************************************************************************************************
 
 INSERT INTO PERSON VALUES(1, 'RAMU', 'ABC', 22);
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
++----+------------+-----------+------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO PERSON VALUES(2, 'MANU', 'XYZ', 24);
+Query OK, 1 row affected (0.23 sec)
+
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
++----+------------+-----------+------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO PERSON VALUES(3, 'SWETHA', 'TEST', 21);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
+|  3 | SWETHA     | TEST      |   21 |
++----+------------+-----------+------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO PERSON VALUES(4, 'KUMAR', 'BLR', 23);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
+|  3 | SWETHA     | TEST      |   21 |
+|  4 | KUMAR      | BLR       |   23 |
++----+------------+-----------+------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO PERSON VALUES(5, 'MURALI', 'BLR', 23);
+Query OK, 1 row affected (0.27 sec)
+
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
+|  3 | SWETHA     | TEST      |   21 |
+|  4 | KUMAR      | BLR       |   23 |
+|  5 | MURALI     | BLR       |   23 |
++----+------------+-----------+------+
+5 rows in set (0.00 sec)
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 INSERT INTO ADDRESS VALUES('123/B', 'BTM', 'BLR', 'KAR', 1);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
++----------+-------------+------+-------+-----------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO ADDRESS VALUES('123/C', 'BTM', 'BLR', 'KAR', 1);//ERROR
+mysql> INSERT INTO ADDRESS VALUES('123/C', 'BTM', 'BLR', 'KAR', 1);
+ERROR 1062 (23000): Duplicate entry '1' for key 'address.PERSON_ID
+
+
 INSERT INTO ADDRESS VALUES('123/D', 'BTM', 'BLR', 'KAR', 2);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
+| 123/D    | BTM         | BLR  | KAR   |         2 |
++----------+-------------+------+-------+-----------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO ADDRESS VALUES('123/E', 'BTM', 'BLR', 'KAR', 3);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
+| 123/D    | BTM         | BLR  | KAR   |         2 |
+| 123/E    | BTM         | BLR  | KAR   |         3 |
++----------+-------------+------+-------+-----------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO ADDRESS VALUES('123/F', 'BTM', 'BLR', 'KAR', 4);
+mysql> INSERT INTO ADDRESS VALUES('123/F', 'BTM', 'BLR', 'KAR', 4);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
+| 123/D    | BTM         | BLR  | KAR   |         2 |
+| 123/E    | BTM         | BLR  | KAR   |         3 |
+| 123/F    | BTM         | BLR  | KAR   |         4 |
++----------+-------------+------+-------+-----------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO ADDRESS VALUES('123/G', 'BTM', 'BLR', 'KAR', 6); //ERROR
+mysql> INSERT INTO ADDRESS VALUES('123/G', 'BTM', 'BLR', 'KAR', 6);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`db`.`address`, CONSTRAINT `ADDRESS_FK1` FOREIGN KEY (`PERSON_ID`) REFERENCES 
+`person` (`ID`))
+
+
 INSERT INTO ADDRESS(HOUSE_NO, STREET_NAME, CITY, STATE)
 		VALUES('123/G', 'BTM', 'BLR', 'KAR');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
+| 123/D    | BTM         | BLR  | KAR   |         2 |
+| 123/E    | BTM         | BLR  | KAR   |         3 |
+| 123/F    | BTM         | BLR  | KAR   |         4 |
+| 123/G    | BTM         | BLR  | KAR   |      NULL |
++----------+-------------+------+-------+-----------+
+5 rows in set (0.00 sec)
 
 
+***********************************************************************************************************************************************************************
 
 SELECT * FROM PERSON;
-SELECT * FROM ADDRESS;
+mysql> SELECT * FROM PERSON;
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
+|  2 | MANU       | XYZ       |   24 |
+|  3 | SWETHA     | TEST      |   21 |
+|  4 | KUMAR      | BLR       |   23 |
+|  5 | MURALI     | BLR       |   23 |
++----+------------+-----------+------+
+5 rows in set (0.00 sec)
 
+
+***********************************************************************************************************************************************************************
+
+SELECT * FROM ADDRESS;
+mysql> SELECT * FROM ADDRESS;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
+| 123/D    | BTM         | BLR  | KAR   |         2 |
+| 123/E    | BTM         | BLR  | KAR   |         3 |
+| 123/F    | BTM         | BLR  | KAR   |         4 |
+| 123/G    | BTM         | BLR  | KAR   |      NULL |
++----------+-------------+------+-------+-----------+
+5 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************************************************************
 
 SELECT * FROM PERSON WHERE FIRST_NAME = 'RAMU';
+mysql> SELECT * FROM PERSON WHERE FRIST_NAME = 'RAMU';
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  1 | RAMU       | ABC       |   22 |
++----+------------+-----------+------+
+1 row in set (0.00 sec)
+
+
 SELECT * FROM ADDRESS WHERE HOUSE_NO = '123/D';
+mysql> SELECT * FROM ADDRESS WHERE HOUSE_NO = '123/D';
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/D    | BTM         | BLR  | KAR   |         2 |
++----------+-------------+------+-------+-----------+
+1 row in set (0.00 sec)
+
 
 SELECT * FROM ADDRESS WHERE PERSON_ID = 3;
+mysql> SELECT * FROM ADDRESS WHERE PERSON_ID = 3;
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/E    | BTM         | BLR  | KAR   |         3 |
++----------+-------------+------+-------+-----------+
+1 row in set (0.00 sec)
 
+***********************************************************************************************************************************************************************
 
 SELECT * FROM ADDRESS WHERE PERSON_ID = 
 (SELECT ID FROM PERSON WHERE FIRST_NAME = 'RAMU');
+mysql> SELECT * FROM ADDRESS WHERE PERSON_ID =
+    -> (
+    ->   SELECT ID FROM PERSON WHERE FRIST_NAME = 'RAMU'
+    -> );
++----------+-------------+------+-------+-----------+
+| HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----------+-------------+------+-------+-----------+
+| 123/B    | BTM         | BLR  | KAR   |         1 |
++----------+-------------+------+-------+-----------+
+1 row in set (0.08 sec)
+
 
 SELECT * FROM PERSON WHERE ID = 
 (SELECT PERSON_ID FROM ADDRESS WHERE HOUSE_NO = '123/E');
+mysql> SELECT * FROM PERSON WHERE ID =
+    -> (
+    ->   SELECT PERSON_ID FROM ADDRESS WHERE HOUSE_NO = '123/E'
+    -> );
++----+------------+-----------+------+
+| ID | FRIST_NAME | LAST_NAME | AGE  |
++----+------------+-----------+------+
+|  3 | SWETHA     | TEST      |   21 |
++----+------------+-----------+------+
+1 row in set (0.00 sec)
 
 
 SELECT * FROM PERSON, ADDRESS WHERE PERSON.ID = ADDRESS.PERSON_ID;
+mysql> SELECT * FROM PERSON, ADDRESS WHERE PERSON.ID = ADDRESS.PERSON_ID;
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+|  1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|  2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|  3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|  4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+4 rows in set (0.00 sec)
+
+
 SELECT * FROM PERSON P, ADDRESS A WHERE P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P, ADDRESS A WHERE P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+|  1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|  2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|  3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|  4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+4 rows in set (0.00 sec)
+
 
 SELECT * FROM PERSON P INNER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P INNER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+|  1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|  2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|  3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|  4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+4 rows in set (0.00 sec)
+
+
+SELECT * FROM PERSON P LEFT JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P LEFT JOIN ADDRESS A ON P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+|  1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|  2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|  3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|  4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
+|  5 | MURALI     | BLR       |   23 | NULL     | NULL        | NULL | NULL  |      NULL |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+5 rows in set (0.00 sec)
+
+
+SELECT * FROM PERSON P RIGHT JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P RIGHT JOIN ADDRESS A ON P.ID = A.PERSON_ID;
++------+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID   | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++------+------------+-----------+------+----------+-------------+------+-------+-----------+
+|    1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|    2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|    3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|    4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
+| NULL | NULL       | NULL      | NULL | 123/G    | BTM         | BLR  | KAR   |      NULL |
++------+------------+-----------+------+----------+-------------+------+-------+-----------+
+5 rows in set (0.00 sec)
+
 SELECT * FROM PERSON P LEFT OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P LEFT OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+|  1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|  2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|  3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|  4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
+|  5 | MURALI     | BLR       |   23 | NULL     | NULL        | NULL | NULL  |      NULL |
++----+------------+-----------+------+----------+-------------+------+-------+-----------+
+5 rows in set (0.00 sec)
+
+
 SELECT * FROM PERSON P RIGHT OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P RIGHT OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
++------+------------+-----------+------+----------+-------------+------+-------+-----------+
+| ID   | FRIST_NAME | LAST_NAME | AGE  | HOUSE_NO | STREET_NAME | CITY | STATE | PERSON_ID |
++------+------------+-----------+------+----------+-------------+------+-------+-----------+
+|    1 | RAMU       | ABC       |   22 | 123/B    | BTM         | BLR  | KAR   |         1 |
+|    2 | MANU       | XYZ       |   24 | 123/D    | BTM         | BLR  | KAR   |         2 |
+|    3 | SWETHA     | TEST      |   21 | 123/E    | BTM         | BLR  | KAR   |         3 |
+|    4 | KUMAR      | BLR       |   23 | 123/F    | BTM         | BLR  | KAR   |         4 |
+| NULL | NULL       | NULL      | NULL | 123/G    | BTM         | BLR  | KAR   |      NULL |
++------+------------+-----------+------+----------+-------------+------+-------+-----------+
+5 rows in set (0.00 sec)
+
+
 SELECT * FROM PERSON P FULL OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+mysql> SELECT * FROM PERSON P FULL OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FULL OUTER JOIN ADDRESS A ON P.ID = A.PERSON_ID' at line 1
+
 
 SELECT * FROM PERSON P FULL OUTER JOIN ADDRESS A ON 
 P.ID = A.PERSON_ID ORDER BY P.ID;
+mysql> SELECT * FROM PERSON P FULL OUTER JOIN ADDRESS A ON
+    -> P.ID = A.PERSON_ID ORDER BY P.ID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FULL OUTER JOIN ADDRESS A ON
+P.ID = A.PERSON_ID ORDER BY P.ID' at line 1
 
 
 
