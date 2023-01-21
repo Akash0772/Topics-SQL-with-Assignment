@@ -22,6 +22,18 @@ note: all the above letters are case in sensitive
 create table t1(sno number, name varchar2(90), dob date, doj timestamp);
 
 insert into t1 values(1, 'abc', sysdate, sysdate);
+mysql> INSERT INTO T1 VALUES(1, 'ABC', CURRENT_DATE(), CURRENT_TIMESTAMP());
+Query OK, 1 row affected (0.13 sec)
+
+mysql> SELECT * FROM T1;
++------+------+------------+---------------------+
+| SNO  | NAME | DOB        | DOJ                 |
++------+------+------------+---------------------+
+|    1 | ABC  | 2023-01-20 | 2023-01-20 19:40:16 |
++------+------+------------+---------------------+
+1 row in set (0.00 sec)
+
+
 insert into t1 values(2, 'xyz', to_date('1990/12/25', 'YYYY/MM/DD'),
                                 to_date('2014/03/25', 'YYYY/MM/DD'));
 insert into t1 values(3, 'xyz', to_date('1990-12-25', 'YYYY-MM-DD'),
