@@ -64,99 +64,1037 @@ Features
 sql commands
 ------------
 CREATE TABLE FUEL_TYPE(ID INT UNIQUE, TYPE VARCHAR(90) UNIQUE);
+mysql> CREATE TABLE FULE_TYPE(ID INT UNIQUE, TYPE VARCHAR(90) UNIQUE);
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| fule_type    |
++--------------+
+1 row in set (0.01 sec)
+
 INSERT INTO FUEL_TYPE VALUES(1, 'PETROL');
+mysql> INSERT INTO FULE_TYPE VALUES(1, 'PETROL');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM FULE_TYPE;
++------+--------+
+| ID   | TYPE   |
++------+--------+
+|    1 | PETROL |
++------+--------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO FUEL_TYPE VALUES(2, 'DIESEL');
+mysql> INSERT INTO FULE_TYPE VALUES(2, 'DIESEL');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM FULE_TYPE;
++------+--------+
+| ID   | TYPE   |
++------+--------+
+|    1 | PETROL |
+|    2 | DIESEL |
++------+--------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO FUEL_TYPE VALUES(3, 'LPG');
+mysql> INSERT INTO FULE_TYPE VALUES(3, 'LPG');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> SELECT * FROM FULE_TYPE;
++------+--------+
+| ID   | TYPE   |
++------+--------+
+|    1 | PETROL |
+|    2 | DIESEL |
+|    3 | LPG    |
++------+--------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO FUEL_TYPE VALUES(4, 'CNG');
+mysql> INSERT INTO FULE_TYPE VALUES(4, 'CNG');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM FULE_TYPE;
++------+--------+
+| ID   | TYPE   |
++------+--------+
+|    1 | PETROL |
+|    2 | DIESEL |
+|    3 | LPG    |
+|    4 | CNG    |
++------+--------+
+4 rows in set (0.00 sec)
+
+
 SELECT * FROM FUEL_TYPE;
+mysql> SELECT * FROM FULE_TYPE;
++------+--------+
+| ID   | TYPE   |
++------+--------+
+|    1 | PETROL |
+|    2 | DIESEL |
+|    3 | LPG    |
+|    4 | CNG    |
++------+--------+
+4 rows in set (0.00 sec)
+
+
 
 CREATE TABLE CAR_TYPE(ID INT UNIQUE, 
 		      TYPE VARCHAR(90) UNIQUE);
+mysql> CREATE TABLE CAR_TYPE(ID INT UNIQUE, TYPE VARCHAR(90) UNIQUE);
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> SHOW TABLES;
++--------------+
+| Tables_in_db |
++--------------+
+| car_type     |
+| fule_type    |
++--------------+
+2 rows in set (0.01 sec)
+
+
 INSERT INTO CAR_TYPE VALUES(1, 'HATCHBACK');
+mysql> INSERT INTO CAR_TYPE VALUES(1, 'HATCHBACK');
+Query OK, 1 row affected (0.45 sec)
+
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
++------+-----------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO CAR_TYPE VALUES(2, 'SEDAN');
+mysql> INSERT INTO CAR_TYPE VALUES(2, 'SADAN');
+Query OK, 1 row affected (0.28 sec)
+
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
+|    2 | SADAN     |
++------+-----------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO CAR_TYPE VALUES(3, 'SUV');
+mysql> INSERT INTO CAR_TYPE VALUES(3, 'SUV');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
+|    2 | SADAN     |
+|    3 | SUV       |
++------+-----------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO CAR_TYPE VALUES(4, 'MPV');
+mysql> INSERT INTO CAR_TYPE VALUES(4, 'MPV');
+Query OK, 1 row affected (0.49 sec)
+
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
+|    2 | SADAN     |
+|    3 | SUV       |
+|    4 | MPV       |
++------+-----------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO CAR_TYPE VALUES(5, 'LUXURY');
+mysql> INSERT INTO CAR_TYPE VALUES(5, 'LUXURY');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
+|    2 | SADAN     |
+|    3 | SUV       |
+|    4 | MPV       |
+|    5 | LUXURY    |
++------+-----------+
+5 rows in set (0.00 sec)
+
+
 INSERT INTO CAR_TYPE VALUES(6, 'VAN');
+mysql> INSERT INTO CAR_TYPE VALUES(6, 'VAN');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
+|    2 | SADAN     |
+|    3 | SUV       |
+|    4 | MPV       |
+|    5 | LUXURY    |
+|    6 | VAN       |
++------+-----------+
+6 rows in set (0.00 sec)
+
+
 SELECT * FROM CAR_TYPE;
+mysql> SELECT * FROM CAR_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | HATCHBACK |
+|    2 | SADAN     |
+|    3 | SUV       |
+|    4 | MPV       |
+|    5 | LUXURY    |
+|    6 | VAN       |
++------+-----------+
+6 rows in set (0.00 sec)
 
 
 CREATE TABLE TRANSMISSION_TYPE(ID INT UNIQUE, 
 			       TYPE VARCHAR(90) UNIQUE);
+mysql> CREATE TABLE TRANSMISSION_TYPE(ID INT UNIQUE, TYPE VARCHAR(90) UNIQUE);
+Query OK, 0 rows affected (0.40 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| car_type          |
+| fule_type         |
+| transmission_type |
++-------------------+
+3 rows in set (0.01 sec)
+
+
 INSERT INTO TRANSMISSION_TYPE VALUES(1, 'MANUAL');
+mysql> INSERT INTO TRANSMISSION_TYPE VALUES(1, 'MANUAL');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> SELECT * FROM TRANSMISSION_TYPE;
++------+--------+
+| ID   | TYPE   |
++------+--------+
+|    1 | MANUAL |
++------+--------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO TRANSMISSION_TYPE VALUES(2, 'AUTOMATIC');
+mysql> INSERT INTO TRANSMISSION_TYPE VALUES(2, 'AUTOMATIC');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM TRANSMISSION_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | MANUAL    |
+|    2 | AUTOMATIC |
++------+-----------+
+2 rows in set (0.00 sec)
+
+
 SELECT * FROM TRANSMISSION_TYPE;
+mysql> SELECT * FROM TRANSMISSION_TYPE;
++------+-----------+
+| ID   | TYPE      |
++------+-----------+
+|    1 | MANUAL    |
+|    2 | AUTOMATIC |
++------+-----------+
+2 rows in set (0.00 sec)
+
+
 
 CREATE TABLE COLOR(ID INT UNIQUE, NAME VARCHAR(90) UNIQUE);
+mysql> CREATE TABLE COLOR(ID INT UNIQUE, NAME VARCHAR(90) UNIQUE);
+Query OK, 0 rows affected (1.32 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| car_type          |
+| color             |
+| fule_type         |
+| transmission_type |
++-------------------+
+4 rows in set (0.00 sec)
+
+
+
 INSERT INTO COLOR VALUES(1, 'BLUE');
+mysql> INSERT INTO COLOR VALUES(1, 'BLUE');
+Query OK, 1 row affected (0.22 sec)
+
+mysql> SELECT * FROM COLOR;
++------+------+
+| ID   | NAME |
++------+------+
+|    1 | BLUE |
++------+------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO COLOR VALUES(2, 'SILVER');
+mysql> INSERT INTO COLOR VALUES(2, 'SILVER');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> SELECT * FROM COLOR;
++------+--------+
+| ID   | NAME   |
++------+--------+
+|    1 | BLUE   |
+|    2 | SILVER |
++------+--------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO COLOR VALUES(3, 'GOLD');
+mysql> INSERT INTO COLOR VALUES(3, 'GOLD');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> SELECT * FROM COLOR;
++------+--------+
+| ID   | NAME   |
++------+--------+
+|    1 | BLUE   |
+|    2 | SILVER |
+|    3 | GOLD   |
++------+--------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO COLOR VALUES(4, 'GRAY');
+mysql> INSERT INTO COLOR VALUES(4, 'GRAY');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> SELECT * FROM COLOR;
++------+--------+
+| ID   | NAME   |
++------+--------+
+|    1 | BLUE   |
+|    2 | SILVER |
+|    3 | GOLD   |
+|    4 | GRAY   |
++------+--------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO COLOR VALUES(5, 'GREEN');
+mysql> INSERT INTO COLOR VALUES(5, 'GREEN');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM COLOR;
++------+--------+
+| ID   | NAME   |
++------+--------+
+|    1 | BLUE   |
+|    2 | SILVER |
+|    3 | GOLD   |
+|    4 | GRAY   |
+|    5 | GREEN  |
++------+--------+
+5 rows in set (0.00 sec)
+
 SELECT * FROM COLOR;
+mysql> SELECT * FROM COLOR;
++------+--------+
+| ID   | NAME   |
++------+--------+
+|    1 | BLUE   |
+|    2 | SILVER |
+|    3 | GOLD   |
+|    4 | GRAY   |
+|    5 | GREEN  |
++------+--------+
+5 rows in set (0.00 sec)
+
+
 
 CREATE TABLE FEATURE(ID INT UNIQUE, 
 		     FEATURE_DESC VARCHAR(90) UNIQUE);
+mysql> CREATE TABLE FEATURE(ID INT UNIQUE, FEATURE_DESC VARCHAR(90) UNIQUE);
+Query OK, 0 rows affected (0.97 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| car_type          |
+| color             |
+| feature           |
+| fule_type         |
+| transmission_type |
++-------------------+
+5 rows in set (0.00 sec)
+
 INSERT INTO FEATURE VALUES(1, 'Cameras that see everything around your caR');
+mysql> INSERT INTO FEATURE VALUES(1, 'Cameras that see everything around yyour car');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
++------+----------------------------------------------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(2, 'AIR CONDITION');
+mysql> INSERT INTO FEATURE VALUES(2, 'Air Condition');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
++------+----------------------------------------------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(3, 'AUDIO');
+mysql> INSERT INTO FEATURE VALUES(3, 'Audio');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
++------+----------------------------------------------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(4, 'VACUUM CLEANER');
+mysql> INSERT INTO FEATURE VALUES(4, 'Vacuum cleaner');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
++------+----------------------------------------------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(5, 'NASA APPROVED CAR SEATS');
+mysql> INSERT INTO FEATURE VALUES(5, 'NASA APPROVED CAR SEATS');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
+|    5 | NASA APPROVED CAR SEATS                      |
++------+----------------------------------------------+
+5 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(6, 'HEATED WIPER BLADES');
+mysql> INSERT INTO FEATURE VALUES(6, 'HEATED WIPER BLADES');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
+|    5 | NASA APPROVED CAR SEATS                      |
+|    6 | HEATED WIPER BLADES                          |
++------+----------------------------------------------+
+6 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(7, 'SENSORS');
+mysql> INSERT INTO FEATURE VALUES(7, 'SENSORS');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
+|    5 | NASA APPROVED CAR SEATS                      |
+|    6 | HEATED WIPER BLADES                          |
+|    7 | SENSORS                                      |
++------+----------------------------------------------+
+7 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(8, 'SPEAKERS');
+mysql> INSERT INTO FEATURE VALUES(8, 'SPEAKERS');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
+|    5 | NASA APPROVED CAR SEATS                      |
+|    6 | HEATED WIPER BLADES                          |
+|    7 | SENSORS                                      |
+|    8 | SPEAKERS                                     |
++------+----------------------------------------------+
+8 rows in set (0.00 sec)
+
+
 INSERT INTO FEATURE VALUES(9, 'ACCESS TO ANDROID AND IPHONE');
+mysql> INSERT INTO FEATURE VALUES(9, 'ACCESS TO ANDROID AND IPHONE');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
+|    5 | NASA APPROVED CAR SEATS                      |
+|    6 | HEATED WIPER BLADES                          |
+|    7 | SENSORS                                      |
+|    8 | SPEAKERS                                     |
+|    9 | ACCESS TO ANDROID AND IPHONE                 |
++------+----------------------------------------------+
+9 rows in set (0.00 sec)
+
 
 SELECT * FROM FEATURE;
+mysql> SELECT * FROM FEATURE;
++------+----------------------------------------------+
+| ID   | FEATURE_DESC                                 |
++------+----------------------------------------------+
+|    1 | Cameras that see everything around yyour car |
+|    2 | Air Condition                                |
+|    3 | Audio                                        |
+|    4 | Vacuum cleaner                               |
+|    5 | NASA APPROVED CAR SEATS                      |
+|    6 | HEATED WIPER BLADES                          |
+|    7 | SENSORS                                      |
+|    8 | SPEAKERS                                     |
+|    9 | ACCESS TO ANDROID AND IPHONE                 |
++------+----------------------------------------------+
+9 rows in set (0.00 sec)
+
 
 CREATE TABLE BRAND(ID INT UNIQUE, 
 		   NAME VARCHAR(90) UNIQUE);
+mysql> CREATE TABLE BRAND(ID INT UNIQUE, NAME VARCHAR(90) UNIQUE);
+Query OK, 0 rows affected (0.75 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| brand             |
+| car_type          |
+| color             |
+| feature           |
+| fule_type         |
+| transmission_type |
++-------------------+
+6 rows in set (0.01 sec)
+
+
 INSERT INTO BRAND VALUES(1, 'MARUTHI SUZUKI');
+mysql> INSERT INTO BRAND VALUES(1, 'MARUTHI SUZUKI');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM BRAND;
++------+----------------+
+| ID   | NAME           |
++------+----------------+
+|    1 | MARUTHI SUZUKI |
++------+----------------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO BRAND VALUES(2, 'TATA');
+mysql> INSERT INTO BRAND VALUES(2, 'TATA');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM BRAND;
++------+----------------+
+| ID   | NAME           |
++------+----------------+
+|    1 | MARUTHI SUZUKI |
+|    2 | TATA           |
++------+----------------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND VALUES(3, 'Hyundai');
+mysql> INSERT INTO BRAND VALUES(3, 'HYUNDAI');
+Query OK, 1 row affected (1.50 sec)
+
+mysql> SELECT * FROM BRAND;
++------+----------------+
+| ID   | NAME           |
++------+----------------+
+|    1 | MARUTHI SUZUKI |
+|    2 | TATA           |
+|    3 | HYUNDAI        |
++------+----------------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND VALUES(4, 'HONDA');
+mysql> INSERT INTO BRAND VALUES(4, 'HONDA');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM BRAND;
++------+----------------+
+| ID   | NAME           |
++------+----------------+
+|    1 | MARUTHI SUZUKI |
+|    2 | TATA           |
+|    3 | HYUNDAI        |
+|    4 | HONDA          |
++------+----------------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND VALUES(5, 'FORD');
+mysql> INSERT INTO BRAND VALUES(5, 'FORD');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> SELECT * FROM BRAND;
++------+----------------+
+| ID   | NAME           |
++------+----------------+
+|    1 | MARUTHI SUZUKI |
+|    2 | TATA           |
+|    3 | HYUNDAI        |
+|    4 | HONDA          |
+|    5 | FORD           |
++------+----------------+
+5 rows in set (0.00 sec)
+
 SELECT * FROM BRAND;
+mysql> SELECT * FROM BRAND;
++------+----------------+
+| ID   | NAME           |
++------+----------------+
+|    1 | MARUTHI SUZUKI |
+|    2 | TATA           |
+|    3 | HYUNDAI        |
+|    4 | HONDA          |
+|    5 | FORD           |
++------+----------------+
+5 rows in set (0.00 sec)
+
+
 
 CREATE TABLE BRAND_MODEL(ID INT UNIQUE,
 			 NAME VARCHAR(90) UNIQUE,
 			 BRAND_ID INT,
 			 CAR_TYPE INT,
 CONSTRAINT BMF1 FOREIGN KEY(BRAND_ID) REFERENCES BRAND(ID), 
-CONSTRAINT BMF2 FOREIGN KEY(CAR_TYPE) REFERENCES CAR_TYPE(ID))
-			 
+CONSTRAINT BMF2 FOREIGN KEY(CAR_TYPE) REFERENCES CAR_TYPE(ID));
+mysql> CREATE TABLE BRAND_MODEL(ID INT UNIQUE, NAME VARCHAR(90) UNIQUE, BRAND_ID INT, CAR_TYPE INT, CONSTRAINT BMF1 FOREIGN KEY(BRAND_ID) REFERENCES BRAND(ID), CONSTRAINT BMF2 FOREIGN KEY(CAR_TYPE) REFERENCES CAR_TYPE(ID));
+Query OK, 0 rows affected (1.59 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| brand             |
+| brand_model       |
+| car_type          |
+| color             |
+| feature           |
+| fule_type         |
+| transmission_type |
++-------------------+
+7 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(1, 'ALTO', 1, 1);
+mysql> INSERT INTO BRAND_MODEL VALUES(1, 'ALTO', 1, 1);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+------+----------+----------+
+| ID   | NAME | BRAND_ID | CAR_TYPE |
++------+------+----------+----------+
+|    1 | ALTO |        1 |        1 |
++------+------+----------+----------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(2, 'SWIFT', 1, 1);
+mysql> INSERT INTO BRAND_MODEL VALUES(2, 'SWIFT', 1, 1);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------+----------+----------+
+| ID   | NAME  | BRAND_ID | CAR_TYPE |
++------+-------+----------+----------+
+|    1 | ALTO  |        1 |        1 |
+|    2 | SWIFT |        1 |        1 |
++------+-------+----------+----------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(3, 'SWIFT DZIRE', 1, 2);
+mysql> INSERT INTO BRAND_MODEL VALUES(3, 'SWIFT DZIRE', 1, 2);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------------+----------+----------+
+| ID   | NAME        | BRAND_ID | CAR_TYPE |
++------+-------------+----------+----------+
+|    1 | ALTO        |        1 |        1 |
+|    2 | SWIFT       |        1 |        1 |
+|    3 | SWIFT DZIRE |        1 |        2 |
++------+-------------+----------+----------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(4, 'OMNI', 1, 6);
+mysql> INSERT INTO BRAND_MODEL VALUES(4, 'OMNI', 1, 6);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------------+----------+----------+
+| ID   | NAME        | BRAND_ID | CAR_TYPE |
++------+-------------+----------+----------+
+|    1 | ALTO        |        1 |        1 |
+|    2 | SWIFT       |        1 |        1 |
+|    3 | SWIFT DZIRE |        1 |        2 |
+|    4 | OMNI        |        1 |        6 |
++------+-------------+----------+----------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(5, 'FIGO', 5, 1);
+mysql> INSERT INTO BRAND_MODEL VALUES(5, 'FIGO', 5, 1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------------+----------+----------+
+| ID   | NAME        | BRAND_ID | CAR_TYPE |
++------+-------------+----------+----------+
+|    1 | ALTO        |        1 |        1 |
+|    2 | SWIFT       |        1 |        1 |
+|    3 | SWIFT DZIRE |        1 |        2 |
+|    4 | OMNI        |        1 |        6 |
+|    5 | FIGO        |        5 |        1 |
++------+-------------+----------+----------+
+5 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(7, 'FIGO ASPIRE', 5, 2);
+mysql> INSERT INTO BRAND_MODEL VALUES(7, 'FIGO ASPIRE', 5, 2);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------------+----------+----------+
+| ID   | NAME        | BRAND_ID | CAR_TYPE |
++------+-------------+----------+----------+
+|    1 | ALTO        |        1 |        1 |
+|    2 | SWIFT       |        1 |        1 |
+|    3 | SWIFT DZIRE |        1 |        2 |
+|    4 | OMNI        |        1 |        6 |
+|    5 | FIGO        |        5 |        1 |
+|    7 | FIGO ASPIRE |        5 |        2 |
++------+-------------+----------+----------+
+6 rows in set (0.00 sec)
+
+
 INSERT INTO BRAND_MODEL VALUES(8, 'ENDEAVOUR', 5, 3);
+mysql> INSERT INTO BRAND_MODEL VALUES(8, 'ENDEAVOUR', 5, 3);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------------+----------+----------+
+| ID   | NAME        | BRAND_ID | CAR_TYPE |
++------+-------------+----------+----------+
+|    1 | ALTO        |        1 |        1 |
+|    2 | SWIFT       |        1 |        1 |
+|    3 | SWIFT DZIRE |        1 |        2 |
+|    4 | OMNI        |        1 |        6 |
+|    5 | FIGO        |        5 |        1 |
+|    7 | FIGO ASPIRE |        5 |        2 |
+|    8 | ENDEAVOUR   |        5 |        3 |
++------+-------------+----------+----------+
+7 rows in set (0.00 sec)
+
 
 SELECT * FROM BRAND_MODEL;
+mysql> SELECT * FROM BRAND_MODEL;
++------+-------------+----------+----------+
+| ID   | NAME        | BRAND_ID | CAR_TYPE |
++------+-------------+----------+----------+
+|    1 | ALTO        |        1 |        1 |
+|    2 | SWIFT       |        1 |        1 |
+|    3 | SWIFT DZIRE |        1 |        2 |
+|    4 | OMNI        |        1 |        6 |
+|    5 | FIGO        |        5 |        1 |
+|    7 | FIGO ASPIRE |        5 |        2 |
+|    8 | ENDEAVOUR   |        5 |        3 |
++------+-------------+----------+----------+
+7 rows in set (0.00 sec)
+
+
 
 CREATE TABLE MODEL_COLOR(MODEL_ID INT, COLOR_ID INT,
 CONSTRAINT MCF1 FOREIGN KEY(MODEL_ID) REFERENCES BRAND_MODEL(ID),
-CONSTRAINT MCF2 FOREIGN KEY(COLOR_ID) REFERENCES COLOR(ID))
+CONSTRAINT MCF2 FOREIGN KEY(COLOR_ID) REFERENCES COLOR(ID));
+mysql> CREATE TABLE MODEL_COLOR(MODEL_ID INT, COLOR_ID INT,CONSTRAINT MCF1 FOREIGN KEY(MODEL_ID) REFERENCES BRAND_MODEL(ID),CONSTRAINT MCF2 FOREIGN KEY(COLOR_ID) REFERENCES COLOR(ID));
+Query OK, 0 rows affected (0.84 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| brand             |
+| brand_model       |
+| car_type          |
+| color             |
+| feature           |
+| fule_type         |
+| model_color       |
+| transmission_type |
++-------------------+
+8 rows in set (0.01 sec)
+
+
 INSERT INTO MODEL_COLOR VALUES(1, 1);
+mysql> INSERT INTO MODEL_COLOR VALUES(1, 1);
+Query OK, 1 row affected (5.35 sec)
+
+mysql> SELECT * FROM MODEL_COLOR;
++----------+----------+
+| MODEL_ID | COLOR_ID |
++----------+----------+
+|        1 |        1 |
++----------+----------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO MODEL_COLOR VALUES(1, 2);
+mysql> INSERT INTO MODEL_COLOR VALUES(1, 2);
+Query OK, 1 row affected (0.22 sec)
+
+mysql> SELECT * FROM MODEL_COLOR;
++----------+----------+
+| MODEL_ID | COLOR_ID |
++----------+----------+
+|        1 |        1 |
+|        1 |        2 |
++----------+----------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_COLOR VALUES(1, 4);
+mysql> INSERT INTO MODEL_COLOR VALUES(1, 4);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> SELECT * FROM MODEL_COLOR;
++----------+----------+
+| MODEL_ID | COLOR_ID |
++----------+----------+
+|        1 |        1 |
+|        1 |        2 |
+|        1 |        4 |
++----------+----------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_COLOR VALUES(2, 2);
+mysql> INSERT INTO MODEL_COLOR VALUES(2, 2);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM MODEL_COLOR;
++----------+----------+
+| MODEL_ID | COLOR_ID |
++----------+----------+
+|        1 |        1 |
+|        1 |        2 |
+|        1 |        4 |
+|        2 |        2 |
++----------+----------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_COLOR VALUES(2, 5);
+mysql> INSERT INTO MODEL_COLOR VALUES(2, 5);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM MODEL_COLOR;
++----------+----------+
+| MODEL_ID | COLOR_ID |
++----------+----------+
+|        1 |        1 |
+|        1 |        2 |
+|        1 |        4 |
+|        2 |        2 |
+|        2 |        5 |
++----------+----------+
+5 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_COLOR VALUES(2, 4)
+mysql> INSERT INTO MODEL_COLOR VALUES(2, 4);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM MODEL_COLOR;
++----------+----------+
+| MODEL_ID | COLOR_ID |
++----------+----------+
+|        1 |        1 |
+|        1 |        2 |
+|        1 |        4 |
+|        2 |        2 |
+|        2 |        5 |
+|        2 |        4 |
++----------+----------+
+6 rows in set (0.00 sec)
 
 
 
 CREATE TABLE MODEL_FEATURE(MODEL_ID INT, 
 			   FEATURE_ID INT,
 CONSTRAINT MMF1 FOREIGN KEY(MODEL_ID) REFERENCES BRAND_MODEL(ID),
-CONSTRAINT MMF2 FOREIGN KEY(FEATURE_ID) REFERENCES FEATURE(ID))
+CONSTRAINT MMF2 FOREIGN KEY(FEATURE_ID) REFERENCES FEATURE(ID));
+mysql> CREATE TABLE MODEL_FEATURE(MODEL_ID INT,    FEATURE_ID INT,CONSTRAINT MMF1 FOREIGN KEY(MODEL_ID) REFERENCES BRAND_MODEL(ID),CONSTRAINT MMF2 FOREIGN KEY(FEATURE_ID) REFERENCES FEATURE(ID));
+Query OK, 0 rows affected (1.52 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_db      |
++-------------------+
+| brand             |
+| brand_model       |
+| car_type          |
+| color             |
+| feature           |
+| fule_type         |
+| model_color       |
+| model_feature     |
+| transmission_type |
++-------------------+
+9 rows in set (0.01 sec)
+
+
 
 INSERT INTO MODEL_FEATURE VALUES(1, 1);
+mysql> INSERT INTO MODEL_FEATURE VALUES(1, 1);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SELECT * FROM MODEL_FEATURE;
++----------+------------+
+| MODEL_ID | FEATURE_ID |
++----------+------------+
+|        1 |          1 |
++----------+------------+
+1 row in set (0.00 sec)
+
+
 INSERT INTO MODEL_FEATURE VALUES(1, 2);
+mysql> INSERT INTO MODEL_FEATURE VALUES(1, 2);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM MODEL_FEATURE;
++----------+------------+
+| MODEL_ID | FEATURE_ID |
++----------+------------+
+|        1 |          1 |
+|        1 |          2 |
++----------+------------+
+2 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_FEATURE VALUES(1, 5);
+mysql> INSERT INTO MODEL_FEATURE VALUES(1, 5);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> SELECT * FROM MODEL_FEATURE;
++----------+------------+
+| MODEL_ID | FEATURE_ID |
++----------+------------+
+|        1 |          1 |
+|        1 |          2 |
+|        1 |          5 |
++----------+------------+
+3 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_FEATURE VALUES(3, 2);
+mysql> INSERT INTO MODEL_FEATURE VALUES(3, 2);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> SELECT * FROM MODEL_FEATURE;
++----------+------------+
+| MODEL_ID | FEATURE_ID |
++----------+------------+
+|        1 |          1 |
+|        1 |          2 |
+|        1 |          5 |
+|        3 |          2 |
++----------+------------+
+4 rows in set (0.00 sec)
+
+
 INSERT INTO MODEL_FEATURE VALUES(3, 5);
+mysql> INSERT INTO MODEL_FEATURE VALUES(3, 5);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM MODEL_FEATURE;
++----------+------------+
+| MODEL_ID | FEATURE_ID |
++----------+------------+
+|        1 |          1 |
+|        1 |          2 |
+|        1 |          5 |
+|        3 |          2 |
+|        3 |          5 |
++----------+------------+
+5 rows in set (0.00 sec)
+
 
 assignment
 -----------
