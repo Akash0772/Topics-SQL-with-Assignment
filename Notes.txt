@@ -1,0 +1,178 @@
+Q1. What is MySQL ?
+Ans. MySQL is a relation database management system (RDBMS) developed by Oracle that is based on structured query language (SQL).
+Q2. What is database ?
+Ans. A database is organized collection of structured information, or data.
+Q3. What is DBMS ?
+Ans. Database Management System (DBMS) are software systems used to store, retrieve, and run queries on data.
+	C	==>	create
+	R	==>	read
+	U	==>	update
+	D	==>	delete
+Q4. How many types of DBMS ?
+Ans. There are two types of DBMS :-
+	a). Relational (SQL)
+	b). Non-relational (No-SQL)
+Q5. What is Relational database ?
+Ans. A relational database is a collection of data items with pre-defined relationships between them, stored in the form of table, rows and columns.
+	List of SQL Databases
+	a). MySQL
+	b). MariaDB
+	c). Oracle
+	d). postgreSQL
+	e). MSSQL
+Q6. How to install MySQL ?
+Ans. Step to follow.....
+	1). Install server
+		MySQL community Server
+	2). Install MySQL Workbench.
+Q7. MySQL Shell work in command form
+	command ==> 	cd bin folder path and enviroment set a user path
+			mysql -u root -p
+			then enter a password
+			show databases; semi-colan mandatory
+			create database db;
+			use db; enter a database
+			show databases;
+Q8. How to create table in MySQL ?
+Q9. What is a database table ?
+Ans. Database table is collection of rows and columns that contains relational data.
+Q10. Categories of Datatypes.
+	a). String
+	b). Numeric
+	c). Date & Time
+Q11. Create table syntax
+Ans. CREATE TABLE table_name
+	{
+		column1 datatype,
+		column1 datatype,
+		column1 datatype,
+		.........
+	};
+Q12. Create users Paper schemas
+	id
+	name
+	emai
+	contact
+	password
+	address
+	dob
+	gender
+	status = 0 and 1
+Q13 Add data into tables using the INSERT query in MySQL ?
+Ans. Insert single row syntax :
+	INSERT INTO table_name
+	(column1, column2, column3, ...)
+	VALUES
+	(value1, value2, value3, ....);
+	
+	Insert Multiple row syntax :
+	INSERT INTO table_name
+	(column1, column2, column3, ...)
+	VALUES
+	(value1, value2, value3, ....),
+	(value1, value2, value3, ....),
+	(value1, value2, value3, ....),
+Q14. Select Query with where clause
+Ans. Select query syntex
+	a). select some column
+		SELECT column1, column2, ...
+		FROM table_name;
+	b). select all columns
+		SELECT *
+		FROM table_name;
+Q15. Use where clause
+Ans. a). The WHERE Clause is use to filter records.
+     b). It is use to extract only thoes records that fullfill a specified conddition.
+     c). syntax:
+		SELECT column1, column2, ...
+		FROM table_name
+		WHERE condition;
+     d). Basic condition 
+	=	==>	equal
+	!=	==>	not equal
+	>=	==>	greaterthan and equal
+	<=	==>	lessthan and equal
+	>	==>	greaterthan
+	<	==>	lessthan
+Q16. MySQL constraints
+	NOT NULL
+	UNIQUE
+	DEFAULT
+	CHECK
+	FOREGIN KEY
+	PRIMARY KEY
+Q17. Commands: And, OR & NOT operator
+Ans. AND Operator :- MySQL logical AND operator compare to expression and return true if both of the expression are true.
+			Example ==> twinse condition true then true.
+     OR Operator :- MySQL OR operator compare two expressions and returns true if either of the expression is true.
+			Example ==> one condition true then true.   
+     NOT Operator :- MySQL NOT operator reverse and negates the input.
+			Example ==> true then false and false then true
+     Syntax :- SEECT * FROM table_name
+	       WHERE condition1 AND condition2;
+				OR
+				NOT
+Q18. What is IN Operator ?
+Ans. a). The IN OPERATOR allow you to specify multiple value in a WHERE clause.
+     b). The IN OPERATOR is a Shortand for Multiple OR conditions.
+     	Syntax :- SELECT * FROM table name
+	          WHERE column_name IN
+		  (value1, value2, ...);
+Q19. What is LIKE Operator ?
+Ans. The LIKE OPERATOR is used in a WHERE clouse to search for a specifies pattern in the column.
+     WILD CARD
+     a). The percent (%) sign is represents zero, one, or multiple characters.
+     b). The underscore sign (_) is represents one single cheracters.
+Q20. What is BETWEEN and NOT BETWEEN ?
+Ans. check a range then use BETWEEN and NOT BETWEEN.
+Q21. What is ORDER BY and DISTINCT
+Ans. ORDER BY ==> Syntax :- SELECT * FROM table_name ORDER BY column_name ASC | DESC
+     DISTINCT ==> Syntax :- SELECT DISTINCT column_name FROM table_name
+Q22. What is IS NULL and IS NOT NULL ?
+Ans. Syntax :- SEECT * FROM table_name WHERE column_name IS NULL | IS NOT NULL
+Q23. What is LIMIT and OFFSET ?
+Ans. LIMIT ==>  If want to LIMIT, the numbers of results that are returnd you can simply use LIMIT command with several rows to LIMIT by.
+                Syntax :- SELECT * FROM table_name LIMIT 8;
+     OFFSET ==> You can also specify an OFFSET from WHERE to start returning data.
+                 Syntax :- SELECT * FROM table_name
+			   LIMIT 6 OFFSET [Number of rows to skip];
+Q24. Aggregate Funtion COUNT(), SUM(), AVG(), MIN(), MAX() ?
+Q25. Update Quary Syntax ?
+Ans. SELECT * FROM table_name SET value WHERE Clause {mandatory}
+Q26. Delete Query Syntax ?
+Ans. DELETE FROM table_name WHERE Clause {mandatory}
+Q27. What is Commit and Rollback ?
+Q28. What is Primary Key ?
+Ans. a). Primary key always contains unique data
+     b). Its cannot be null.
+     c). There must be a single primary key.
+     d). CREATE TABLE table_name(
+					id INT NOT NULL AUTO_INCREMENT,
+					name VARCHAR(50) NOT NULL,
+					age INT NOT NULL,
+					city VARCHAR(10) NOT NULL,
+					PRIMARY KEY(id)
+				);
+Q29. What is Forign Key ?
+Ans. a). The Foreign key is used to link two tables.
+     b). A foreign key in one table (child table) is used to point PRIMARY key in another table (parent table).
+     c). CREATE TABLE table_name(
+					id INT NOT NULL AUTO_INCREMENT,
+					name VARCHAR(50) NOT NULL,
+					age INT NOT NULL,
+					city INT NOT NULL,
+					PRIMARY KEY(id)
+					FOREIGN KEY(city) REFERENCES City (id) 
+				);
+Q30. What is MySQL INNER JOIN ?
+Ans. a). The MySQL Inner Join is used to return only those result form the tables tha match the specified condition and hides other rows and columns.
+     b). MySQL assumes it as a default Join, so it is optional to use the Inner Join keyword with the query.
+Q31. What is MySQL LEFT JOIN ?
+Ans. The MySQL LEFT JOIN keyword returns all record from the left table(table1), and the matched records from the right(table2).
+Q32. What is MySQL RIGHT JOIN ?
+Ans. The MySQL RIGHT JOIN keyword returns all record from the right table(table2), and the matched records from the Left(table1).
+Q33. What is MySQL CROSS JOIN ?
+Q34. What is Join Multiple Tables using MySQL Command ?
+Q35. What are MySQL GROUP BY and HAVING ?
+Q36. MySQL SubQuery with EXISTS and NOT EXIST ?
+Q37. What is DROP ?
