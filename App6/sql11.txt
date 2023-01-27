@@ -1,5 +1,7 @@
 INF:
 
+CREATE TABLE EMPLOYEE(SNO INT UNIQUE, NAME VARCHAR(90) UNIQUE, AGE INT, SKILL VARCHAR(90));
+
 
 employee
 --------
@@ -11,6 +13,7 @@ sno	name	age	skills
 4	pavan	77	C, Oracle
 
 
+CREATE TABLE EMPLOYEE(SNO INT UNIQUE, NAME VARCHAR(90) UNIQUE, AGE INT);
 
 
 employee
@@ -23,6 +26,7 @@ sno	name	age
 3	mohan	25	
 4	pavan	77	
 
+CREATE TABLE EMPLOYEE_SKILL(EMP_SNO INT, SKILL VARCHAR(90));
 
 employee_skill
 --------------
@@ -43,6 +47,8 @@ emp_sno		skill
 2NF
 
 
+CREATE TABLE TRAINER(T_ID INT, NAME VARCHAR(90), AGE INT, SUBJECT VARCHAR(90));
+
 trainer
 -------
 t_id		Name		age		subject
@@ -52,6 +58,9 @@ t_id		Name		age		subject
 2		Ramu		38		Maths
 2		Ramu		38		Physics
 
+
+CREATE TABLE TRAINER(T_ID INT UNIQUE, NAME VARCHAR(90) UNIQUE, AGE INT UNIQUE);
+
 TRAINER
 -------
 t_id	name	age
@@ -59,6 +68,7 @@ t_id	name	age
 1	Manu	28
 2	Ramu	38
 
+CREATE TABLE TRAINER_SUBJECT(T_ID INT, SUBJECT VARCHAR(90));
 
 TRAINER_SUBJECT
 ---------------
